@@ -30,8 +30,8 @@ var canTransition = false;
 
 
 // ----------------------------------------------------------------------------- S O C K E T . I O
-var socket = io.connect('http://avd.local:8080');
-// var socket = io.connect('http://192.168.4.1:8080');
+// var socket = io.connect('http://avd.local:8080');
+var socket = io.connect('http://192.168.4.1:8080');
 // var socket = io.connect('http://192.168.1.83:8080');
 
 
@@ -107,7 +107,8 @@ function handleOrientation(event) {
                         setTimeout(() => {
                             try {
                                 // location.href = `http://192.168.1.83:8080?colour=${user.colour}`;
-                                location.href = `http://avd.local:8080?colour=${user.colour}`;
+                                location.href = `http://192.168.4.1:8080?colour=${user.colour}`;
+                                // location.href = `http://avd.local:8080?colour=${user.colour}`;
                             } catch (e) {
                                 $('#transition-counter').hide();
                                 $('#redirect').show();
