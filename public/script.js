@@ -112,7 +112,7 @@ function handleOrientation(event) {
                                 $('#transition-counter').hide();
                                 $('#redirect').show();
                             }
-                        })
+                        }, 500)
                         transitionCounter = 3;
                     }
                 }, 1000);

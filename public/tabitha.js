@@ -156,7 +156,7 @@ function handleOrientation(event) {
                                 $('#transition-counter').hide();
                                 $('#redirect').show();
                             }
-                        })
+                        }, 500)
                         transitionCounter = 3;
                     }
                 }, 1000);
@@ -241,7 +241,7 @@ function heartClick() { // the user has created a heart
     }, 100);
 
 
-    socket.emit('newHeart', {colour: user.colour, userPosition: 'henry'}); // sends heart to the server so it can be emitted for everyone else
+    socket.emit('newHeart', {colour: user.colour, userPosition: 'tabitha'}); // sends heart to the server so it can be emitted for everyone else
 
 
     // --------------------- random settings for individual heart
