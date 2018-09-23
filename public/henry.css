@@ -1,0 +1,194 @@
+* {
+    margin: 0;
+    user-select: none !important;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+/* ------------------------------------------------------------------------------- A N I M A T I O N S */
+/* flash animation for user count update / artist name in tutorial screen / enter button on enter screen */
+@keyframes flash {
+    from {filter: invert(100%)}
+    to {filter: invert(0%)}
+}
+
+/* animation for the heart svg */
+@keyframes heartWobble {
+    0% {transform: rotate(0deg)}
+    25% {transform: rotate(10deg)}
+    50% {transform: rotate(0deg)}
+    75% {transform: rotate(-10deg)}
+    100% {transform: rotate(0deg)}
+}
+
+
+/* ------------------------------------------------------------------------------- G R A D I E N T  B A C K G R O U N D */
+#background {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+
+#background div {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(darkslategrey, blue, deeppink, peachpuff);
+}
+
+/* ------------------------------------------------------------------------------- H E A R T  C A N V A S */
+#heartCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+
+/* ------------------------------------------------------------------------------- H E A R T  S V G  W R A P */
+#heart-wrap {
+    position: fixed;
+    height: 145px;
+    width: 160px;
+    bottom: 60px;
+    right: 60px;
+    z-index: 100;
+    pointer-events: auto;
+    animation: heartWobble 4s linear infinite;
+    transition: opacity 0.8s;
+}
+
+
+/* ------------------------------------------------------------------------------- T R A N S I T I O N  S C R E E N */
+#transition-wrap {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 103;
+}
+
+/* the div with the countodwn numbers */
+#transition-counter {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 300px;
+    color: rgb(38, 223, 241);
+    font-style: italic;
+    font-family: Arial;
+    font-weight: 200;
+}
+
+
+/* ------------------------------------------------------------------------------- T U T O R I A L  S C R E E N S */
+#tutorial-overlay {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 102;
+}
+
+/* classname for ALL tutorial screens */
+.tutorial {
+    height: 100%;
+    width: 100vw;
+    pointer-events: auto;
+}
+
+/* flash used on artist name */
+.flash2 {
+    animation: flash 0.1s linear 8;
+}
+
+
+/* ----------------------------------------------------- HENRY POPE TUTORIAL */
+#position-3 {
+    pointer-events: auto;
+    display: flex;
+    background-color: rgba(20, 20, 60, 0.9);
+    justify-content: center;
+    align-items: center;
+    color: rgb(38, 223, 241);
+    flex-direction: column;
+    letter-spacing: 6px;
+    font-style: italic;
+    font-size: 43px;
+    font-family: Arial;
+    font-weight: 200;
+}
+
+#henryName {
+    position: relative;
+    top: -300px;
+    font-size: 80px;
+    transition: left 1.3s;
+    pointer-events: none;
+}
+
+#position-3 .tutorialX {
+    position: relative;
+    top: 250px;
+    pointer-events: none;
+}
+
+
+/* ------------------------------------------------------------------------------- H E N R Y */
+#henry {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    perspective: 800px;
+}
+
+#henry img {
+    position: absolute;
+    transform-style: preserve-3d;
+}
+
+@keyframes one {
+    0%   {transform: translateX(-100px) translateY(-1100px) translateZ(-400px) rotateY(-5deg) rotateX(0deg)}
+    100% {transform: translateX(-100px) translateY(2500px) translateZ(-400px) rotateY(-5deg) rotateX(720deg)}
+}
+
+#henry img:first-of-type {
+    width: 700px;
+    transform: translateX(-100px) translateY(-1200px) translateZ(-400px) rotateY(-5deg) rotateX(0deg);
+    animation: one 60s linear infinite;
+}
+
+@keyframes two {
+    0%   {transform: translateX(650px) translateY(60px) translateZ(-500px) rotateY(-20deg) rotateX(-15deg)}
+    40%  {transform: translateX(650px) translateY(30px) translateZ(-500px) rotateY(100deg) rotateX(-15deg)}
+    50%  {transform: translateX(650px) translateY(10px) translateZ(-500px) rotateY(140deg) rotateX(-15deg)}
+    100% {transform: translateX(650px) translateY(60px) translateZ(-500px) rotateY(-20deg) rotateX(-15deg)}
+}
+
+#henry img:nth-of-type(2) {
+    width: 500px;
+    transform: translateX(650px) translateY(60px) translateZ(-500px) rotateY(-20deg) rotateX(-15deg);
+    animation: two 30s linear infinite;
+}
+
+@keyframes three {
+    0%   {transform: translateX(100px) translateY(600px) translateZ(-50px) rotateY(0deg) rotateX(0deg) rotate(15deg);}
+    100% {transform: translateX(100px) translateY(600px) translateZ(-50px) rotateY(-360deg) rotateX(0deg) rotate(15deg);}
+}
+
+#henry img:last-of-type {
+    width: 500px;
+    transform: translateX(100px) translateY(600px) translateZ(-50px) rotateY(20deg) rotateX(0deg);
+    animation: three 22s linear infinite;
+}

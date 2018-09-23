@@ -2,11 +2,57 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>localhostAVD</title>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
 
+        <!-- ...................................  gradient background -->
+        <div id="background">
+            <div id="back-boi"></div>
+        </div>
+
+        <!-- ...................................  tansition screen with countdown -->
+        <div id="transition-wrap">
+            <div id="transition-counter"></div>
+            <a id='redirect' href="/john_flindt">click to manually redirect</a>
+        </div>
+
+        <div id="tutorial-overlay">
+            <!-- ...................................  tutorial that introduces users to holding phone above head -->
+            <div class="tutorial" id="position-0">
+                <p class="up-indicator">˄</p>
+                <p class="up-indicator">˄</p>
+                <p class="up-indicator">˄</p>
+                <p>to progress from work to work hold phone above head for 3s</p>
+            </div>
+        </div>
+
+        <div id="loading-wrap">
+            <!-- ...................................  dynamic list for artists -->
+            <ul id="art-name-load-wrap">
+                <li class="art-name-load"></li>
+                <li class="art-name-load"></li>
+                <li class="art-name-load"></li>
+                <li class="art-name-load"></li>
+                <li class="art-name-load"></li>
+                <li class="art-name-load"></li>
+                <li class="art-name-load"></li>
+                <li class="art-name-load"></li>
+                <li class="art-name-load"></li>
+            </ul>
+
+            <!-- ...................................  elem that has dashes and changes to enter once loaded -->
+            <h1 id="loading-visual">start</h1>
+
+            <p id="audio-reminder">enable audio</p>
+
+            <!-- ...................................  dynamic user connected count -->
+            <h2 id="online-users-wrap">users connected_ <span id="online-users">1</span></h2>
+        </div>
+
+        <script src="jquery.min.js" charset="utf-8"></script>
+        <script src="/socket.io/socket.io.js"></script>
         <script src="script.js" charset="utf-8"></script>
     </body>
 </html>

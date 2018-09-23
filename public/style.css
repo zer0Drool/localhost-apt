@@ -1,0 +1,215 @@
+* {
+    margin: 0;
+    user-select: none !important;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+}
+
+@keyframes flash {
+    from {filter: invert(100%)}
+    to {filter: invert(0%)}
+}
+
+/* ------------------------------------------------------------------------------- G R A D I E N T  B A C K G R O U N D */
+#background {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+
+#background div {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(darkslategrey, blue, deeppink, peachpuff);
+}
+
+
+/* ------------------------------------------------------------------------------- E N T E R  S C R E E N */
+#loading-wrap {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: 101;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* the animated loading button */
+#loading-visual {
+    width: 185px;
+    color: transparent;
+    letter-spacing: 11px;
+    font-size: 43px;
+    -webkit-text-stroke: 0.5px white;
+    text-shadow: -5px 0px white;
+    font-family: Menlo;
+    font-weight: 200;
+    animation: flash 0.6s linear infinite;
+}
+
+/* artist name list */
+#art-name-load-wrap {
+    position: absolute;
+    width: 800px;
+    top: 90px;
+    left: 70px;
+    color: rgb(38, 223, 241);
+    letter-spacing: 6px;
+    list-style: none;
+    font-style: italic;
+    font-size: 43px;
+    font-family: Arial;
+    font-weight: 200;
+}
+
+/* no of users connected */
+#online-users-wrap {
+    position: absolute;
+    bottom: 350px;
+    left: 110px;
+    color: rgb(38, 223, 241);
+    letter-spacing: 6px;
+    font-size: 43px;
+    font-style: italic;
+    font-family: Arial;
+    font-weight: 200;
+}
+
+/* the number within the wrap */
+#online-users-wrap span {
+    position: relative;
+    top: 30px;
+    left: 56px;
+    font-size: 160px;
+    color: rgb(38, 203, 201);
+}
+
+/* the flash user on user count number */
+.flash {
+    animation: flash 0.1s linear 3;
+}
+
+#audio-reminder {
+    position: absolute;
+    bottom: 280px;
+    left: 110px;
+    color: rgb(38, 223, 241);
+    letter-spacing: 6px;
+    font-size: 43px;
+    font-style: italic;
+    font-family: Arial;
+    font-weight: 200;
+}
+
+
+/* ------------------------------------------------------------------------------- H E A R T  C A N V A S */
+#heartCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+
+/* ------------------------------------------------------------------------------- T R A N S I T I O N  S C R E E N */
+#transition-wrap {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 103;
+}
+
+/* the div with the countodwn numbers */
+#transition-counter {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 300px;
+    color: rgb(38, 223, 241);
+    font-style: italic;
+    font-family: Arial;
+    font-weight: 200;
+}
+
+#redirect {
+    height: 100%;
+    text-decoration: none;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 60px;
+    color: rgb(38, 223, 241);
+    font-style: italic;
+    font-family: Arial;
+    font-weight: 200;
+    pointer-events: auto;
+}
+
+/* ------------------------------------------------------------------------------- T U T O R I A L  S C R E E N S */
+#tutorial-overlay {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 102;
+}
+
+/* classname for ALL tutorial screens */
+.tutorial {
+    height: 100%;
+    width: 100vw;
+    pointer-events: auto;
+}
+
+/* flash used on artist name */
+.flash2 {
+    animation: flash 0.1s linear 8;
+}
+
+
+/* ----------------------------------------------------- PHONE ABOVE HEAD TUTORIAL */
+#position-0 {
+    display: none;
+    text-transform: uppercase;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: rgb(38, 223, 241);
+    letter-spacing: 6px;
+    font-style: italic;
+    font-size: 43px;
+    font-family: Arial;
+    font-weight: 200;
+}
+
+#position-0 p {
+    width: 400px;
+    text-align: center;
+}
+
+.up-indicator {
+    margin-bottom: 60px;
+}
+
+.up-indicator:last-of-type {
+    margin-bottom: 120px;
+}

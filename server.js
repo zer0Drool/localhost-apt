@@ -110,12 +110,12 @@ io.on('connection', (socket) => {
 
 
     socket.on('newHeart', data => { // a heart has been drawn
-        socket.broadcast.emit('other_heart', {colour: socket.colour}); // emits to ALL sockects EXCEPT sender with new heart
+        socket.broadcast.emit('other_heart', {colour: data.colour}); // emits to ALL sockects EXCEPT sender with new heart
 
-        peachpuff = socket.colour === 1 ? peachpuff + 1 : peachpuff; // stuff to check for gradient update
-        deeppink = socket.colour === 2 ? deeppink + 1 : deeppink;
-        blue = socket.colour === 3 ? blue + 1 : blue;
-        darkslategrey = socket.colour === 4 ? darkslategrey + 1 : darkslategrey;
+        peachpuff = data.colour == 1 ? peachpuff + 1 : peachpuff; // stuff to check for gradient update
+        deeppink = data.colour == 2 ? deeppink + 1 : deeppink;
+        blue = data.colour == 3 ? blue + 1 : blue;
+        darkslategrey = data.colour == 4 ? darkslategrey + 1 : darkslategrey;
         if (peachpuff === 50) {
             updateBackground('peachpuff');
             peachpuff = 0;
