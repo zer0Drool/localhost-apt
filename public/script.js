@@ -106,7 +106,8 @@ function handleOrientation(event) {
                         clearInterval(transitionInterval);
                         setTimeout(() => {
                             try {
-                                location.href = `http://192.168.1.83:8080/john_flindt?colour=${user.colour}`;
+                                // location.href = `http://192.168.1.83:8080/john_flindt?colour=${user.colour}`;
+                                location.href = `http://avd.local:8080/john_flindt?colour=${user.colour}`;
                             } catch (e) {
                                 $('#transition-counter').hide();
                                 $('#redirect').show();
