@@ -26,16 +26,19 @@ var canTransition = false;
 
 
 // ----------------------------------------------------------------------------- S O C K E T . I O
-// var socket = io.connect('http://avd.local:8080');
+var socket = io.connect('http://avd.local:8080');
 // var socket = io.connect('http://192.168.4.1:8080');
-var socket = io.connect('http://192.168.1.83:8080');
+// var socket = io.connect('http://192.168.1.83:8080');
 
 
 socket.on('connect', function(data) {
    user.id = socket.id;
    socket.on('my_colour', data => { // happens when user connects / sets heart colour / changes background gradient / updates artist list
        user.colour = data.colour;
-       console.log(user.colour);
+       if (location.search.replace(/^.*?\=/, '').length) {
+           console.log('colour overwritten');
+           user.colour = location.search.replace(/^.*?\=/, '')
+       }
        backgroundX.style.background = data.backgroundColour;
 
        var artistLiArray = document.getElementsByTagName('li');
@@ -107,8 +110,8 @@ function handleOrientation(event) {
                         clearInterval(transitionInterval);
                         setTimeout(() => {
                             try {
-                                location.href = `http://192.168.1.83:8080/john_flindt?colour=${user.colour}`;
-                                // location.href = `http://avd.local:8080/john_flindt?colour=${user.colour}`;
+                                // location.href = `http://192.168.1.83:8080/john_flindt?colour=${user.colour}`;
+                                location.href = `http://avd.local:8080/john_flindt?colour=${user.colour}`;
                             } catch (e) {
                                 $('#transition-counter').hide();
                                 $('#redirect').show();

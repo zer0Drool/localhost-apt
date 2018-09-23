@@ -1,0 +1,306 @@
+* {
+    margin: 0;
+    user-select: none !important;
+}
+
+body {
+    width: 100vw;
+    height: 100%;
+}
+
+/* ------------------------------------------------------------------------------- A N I M A T I O N S */
+/* flash animation for user count update / artist name in tutorial screen / enter button on enter screen */
+@keyframes flash {
+    from {filter: invert(100%)}
+    to {filter: invert(0%)}
+}
+
+/* animation for the heart svg */
+@keyframes heartWobble {
+    0% {transform: rotate(0deg)}
+    25% {transform: rotate(10deg)}
+    50% {transform: rotate(0deg)}
+    75% {transform: rotate(-10deg)}
+    100% {transform: rotate(0deg)}
+}
+
+
+/* ------------------------------------------------------------------------------- G R A D I E N T  B A C K G R O U N D */
+#background {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    z-index: -100;
+}
+
+#background div {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(darkslategrey, blue, deeppink, peachpuff);
+}
+
+/* ------------------------------------------------------------------------------- H E A R T  C A N V A S */
+#heartCanvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
+
+
+/* ------------------------------------------------------------------------------- H E A R T  S V G  W R A P */
+#heart-wrap {
+    position: fixed;
+    height: 145px;
+    width: 160px;
+    bottom: 60px;
+    right: 60px;
+    z-index: 100;
+    pointer-events: auto;
+    animation: heartWobble 4s linear infinite;
+    transition: opacity 0.8s;
+}
+
+
+/* ------------------------------------------------------------------------------- T R A N S I T I O N  S C R E E N */
+#transition-wrap {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    display: none;
+    z-index: 103;
+}
+
+/* the div with the countodwn numbers */
+#transition-counter {
+    height: 100%;
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 300px;
+    color: rgb(38, 223, 241);
+    font-style: italic;
+    font-family: Arial;
+    font-weight: 200;
+}
+
+
+/* ------------------------------------------------------------------------------- T U T O R I A L  S C R E E N S */
+#tutorial-overlay {
+    position: fixed;
+    height: 100%;
+    width: 100vw;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    z-index: 102;
+}
+
+/* classname for ALL tutorial screens */
+.tutorial {
+    height: 100%;
+    width: 100vw;
+    pointer-events: auto;
+}
+
+/* flash used on artist name */
+.flash2 {
+    animation: flash 0.1s linear 8;
+}
+
+
+/* ----------------------------------------------------- ian TUTORIAL */
+#position-17 {
+    pointer-events: auto;
+    display: flex;
+    background-color: rgba(20, 20, 60, 0.9);
+    justify-content: center;
+    align-items: center;
+    color: rgb(38, 223, 241);
+    flex-direction: column;
+    letter-spacing: 6px;
+    font-style: italic;
+    font-size: 43px;
+    font-family: Arial;
+    font-weight: 200;
+}
+
+#ianName {
+    position: relative;
+    top: -300px;
+    font-size: 80px;
+    transition: left 1.3s;
+    pointer-events: none;
+}
+
+#ianInstruction1 {
+    width: 80%;
+    position: relative;
+    top: 50px;
+    transition: left 1.3s;
+    pointer-events: none;
+    text-align: center;
+}
+
+#position-17 .tutorialX {
+    position: relative;
+    top: 250px;
+    pointer-events: none;
+}
+
+/* ------------------------------------------------------------------------------- I A N */
+#ian {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+#ian-scroll {
+    width: 100%;
+    height: 10000px;
+    background: linear-gradient(hotpink, transparent);
+}
+
+#housewife-name {
+    color: black;
+    text-shadow: 8px 5px 0px white, 0 0 1em white, 0 0 0.2em white;
+    font-weight: 600;
+    font-family: sans-serif;
+    font-size: 100px;
+    text-align: center;
+    height: 230px;
+}
+
+#ian-canv-wrap {
+    height: 1200px;
+    width: 100vw;
+    pointer-events: none;
+    z-index: -1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#ian-canv {
+    border-radius: 500px;
+    pointer-events: none;
+    border: 25px ridge rgb(239, 143, 180);
+}
+
+.pDiamond {
+    width: 100px;
+    pointer-events: none;
+    position: absolute;
+}
+
+.pDiamond:first-of-type {
+    top: 550px;
+    left: 780px;
+}
+
+.pDiamond:nth-of-type(2) {
+    top: 860px;
+    left: 697px;
+}
+
+.pDiamond:nth-of-type(3) {
+    top: 230px;
+    left: 610px;
+}
+
+.pDiamond:nth-of-type(4) {
+    top: 310px;
+    left: 160px;
+}
+
+.pDiamond:nth-of-type(5) {
+    top: 1110px;
+    left: 270px;
+}
+
+.pDiamond:nth-of-type(6) {
+    top: 1200px;
+    left: 740px;
+}
+
+.pDiamond:nth-of-type(7) {
+    top: 610px;
+    left: 190px;
+}
+
+.pDiamond:nth-of-type(8) {
+    top: 550px;
+    left: 780px;
+}
+
+.pDiamond:nth-of-type(9) {
+    top: 921px;
+    left: 80px;
+}
+
+.pDiamond:nth-of-type(10) {
+    top: 1400px;
+    left: 160px;
+}
+
+.pDiamond:nth-of-type(11) {
+    top: 1820px;
+    left: 240px;
+    opacity: 0.8;
+}
+
+.pDiamond:nth-of-type(12) {
+    top: 1510px;
+    left: 450px;
+    opacity: 0.9;
+}
+
+.pDiamond:nth-of-type(13) {
+    top: 2070px;
+    left: 720px;
+    opacity: 0.7;
+}
+
+.pDiamond:nth-of-type(14) {
+    top: 2410px;
+    left: 100px;
+    opacity: 0.6;
+}
+
+.pDiamond:nth-of-type(15) {
+    top: 2710px;
+    left: 560px;
+    opacity: 0.5;
+}
+
+.pDiamond:nth-of-type(16) {
+    top: 3420px;
+    left: 310px;
+    opacity: 0.4;
+}
+
+.pDiamond:nth-of-type(17) {
+    top: 4230px;
+    left: 580px;
+    opacity: 0.3;
+}
+
+.pDiamond:nth-of-type(18) {
+    top: 5400px;
+    left: 470px;
+    opacity: 0.2;
+}
+
+.pDiamond:nth-of-type(19) {
+    top: 6810px;
+    left: 320px;
+    opacity: 0.1;
+}
