@@ -6,6 +6,7 @@ window.onerror = function(msg, url, linenumber) {
     return true;
 }
 
+bodyScrollLock.disableBodyScroll(document.body);
 
 // ----------------------------------------------------------------------------- W I N D O W  L O C A T I O N
 if (location.protocol != 'http:') {
@@ -25,9 +26,9 @@ var canTransition = false;
 
 
 // ----------------------------------------------------------------------------- S O C K E T . I O
-var socket = io.connect('http://avd.local:8080');
+// var socket = io.connect('http://avd.local:8080');
 // var socket = io.connect('http://192.168.4.1:8080');
-// var socket = io.connect('http://192.168.1.83:8080');
+var socket = io.connect('http://192.168.1.83:8080');
 
 
 socket.on('connect', function(data) {
@@ -106,8 +107,8 @@ function handleOrientation(event) {
                         clearInterval(transitionInterval);
                         setTimeout(() => {
                             try {
-                                // location.href = `http://192.168.1.83:8080/john_flindt?colour=${user.colour}`;
-                                location.href = `http://avd.local:8080/john_flindt?colour=${user.colour}`;
+                                location.href = `http://192.168.1.83:8080/john_flindt?colour=${user.colour}`;
+                                // location.href = `http://avd.local:8080/john_flindt?colour=${user.colour}`;
                             } catch (e) {
                                 $('#transition-counter').hide();
                                 $('#redirect').show();

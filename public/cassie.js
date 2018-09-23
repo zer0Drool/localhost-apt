@@ -6,6 +6,7 @@ window.onerror = function(msg, url, linenumber) {
     return true;
 }
 
+bodyScrollLock.disableBodyScroll(document.body);
 
 // ----------------------------------------------------------------------------- W I N D O W  L O C A T I O N
 if (location.protocol != 'http:') {
@@ -28,9 +29,9 @@ var canTransition = false;
 
 
 // ----------------------------------------------------------------------------- S O C K E T . I O
-var socket = io.connect('http://avd.local:8080');
+// var socket = io.connect('http://avd.local:8080');
 // var socket = io.connect('http://192.168.4.1:8080');
-// var socket = io.connect('http://192.168.1.83:8080');
+var socket = io.connect('http://192.168.1.83:8080');
 
 
 socket.on('connect', function(data) {
@@ -85,8 +86,8 @@ function handleOrientation(event) {
                         clearInterval(transitionInterval);
                         setTimeout(() => {
                             try {
-                                // location.href = `http://192.168.1.83:8080/jon_arbuckle?colour=${user.colour}`;
-                                location.href = `http://avd.local:8080/jon_arbuckle?colour=${user.colour}`;
+                                location.href = `http://192.168.1.83:8080/jon_arbuckle?colour=${user.colour}`;
+                                // location.href = `http://avd.local:8080/jon_arbuckle?colour=${user.colour}`;
                             } catch (e) {
                                 $('#transition-counter').hide();
                                 $('#redirect').show();
@@ -292,9 +293,9 @@ game.stage.backgroundColor = "#e9ff00";
 }
 
 // scaleRatio = 3;
-// scaleRatio = window.devicePixelRatio / 3;
+scaleRatio = 1.8;
 //when creatung each asset, set it this way:
-// myAsset.scale.setTo(scaleRatio, scaleRatio);
+// .scale.setTo(scaleRatio, scaleRatio);
 
 var boomStyleCloud = { font: "16px Courier", fill: "#fff"};
 function create(){
@@ -332,11 +333,13 @@ bushes.create(game.world.randomX, game.world.randomY, 'billboard02');
 bushes.create(game.world.randomX, game.world.randomY, 'billboard04');
 bushes.setAll("smoothed", false);}
 bushes.sort();
+bushes.scale.setTo(scaleRatio, scaleRatio);
 //rain rain go away
 background= game.add.tileSprite(0, 0,  game.world.width,game.world.height, 'rain');
 background.animations.add("rai",[],10,true);
 background.animations.add("rain",[],10,true);
 background.animations.play("rain");
+background.scale.setTo(scaleRatio, scaleRatio);
 //clouds
 cloudGroup = game.add.group();
 cloudGroup.enableBody = true;
@@ -364,6 +367,7 @@ genieSmokes.setAll('anchor.x', 0.5);
 genieSmokes.setAll('anchor.y', 1);
 genieSmokes.forEach(function(genieSmoke) {
 genieSmoke.animations.add('genieSmoke');
+genieSmoke.scale.setTo(scaleRatio, scaleRatio);
 });
 };
 function update(){
@@ -391,6 +395,7 @@ genieSmoke.reset(bird.x-10, bird.y+22, 0);
 genieSmoke.play('genieSmoke', 10, false, true);
 bird.checkWorldBounds = true;
 bird.outOfBoundsKill = true;
+bird.scale.setTo(scaleRatio, scaleRatio);
 }
 }
 
@@ -415,6 +420,7 @@ function explodeCloud(){
 var explosionCloud = explosionsClouds.getFirstExists(false);
 explosionCloud.reset(cloud.x, cloud.y+150, 0);
 explosionCloud.play('explosionCloud', 15, false, true);
+explosionCloud.scale.setTo(scaleRatio, scaleRatio);
 killCloud = game.add.tween(cloud).to( { alpha: 0 }, 800, "Linear", true);
 killCloud.onComplete.add(killC);
 function killC(){cloud.kill();}
@@ -423,6 +429,7 @@ cloud.anchor.setTo(0.5, 0.5);
 cloud.reset(-30,game.world.randomY);
 cloud.body.velocity.x = velocityX * deltaTime;
 cloud.checkWorldBounds = true;
-cloud.outOfBoundsKill = true;}}
+cloud.outOfBoundsKill = true;
+cloud.scale.setTo(scaleRatio, scaleRatio);}}
 
 }());
