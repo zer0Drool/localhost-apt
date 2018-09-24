@@ -73,12 +73,17 @@ function tabiLoad() {
     }, 11000);
 }
 
+var needToPause = true;
+
 function pauseTabVideo() {
-    var tabVidsToPause = document.getElementsByClassName('tabVid');
-    for (var i = 0; i < tabVidsToPause.length; i++) {
-        tabVidsToPause[i].pause();
-        tabVidsToPause[i].currentTime = 0;
-        tabVidsToPause[i].volume = 1;
+    if (needToPause) {
+        needToPause = false;
+        var tabVidsToPause = document.getElementsByClassName('tabVid');
+        for (var i = 0; i < tabVidsToPause.length; i++) {
+            tabVidsToPause[i].pause();
+            tabVidsToPause[i].currentTime = 0;
+            tabVidsToPause[i].volume = 1;
+        }
     }
 }
 

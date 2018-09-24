@@ -48,6 +48,36 @@ socket.on('connect', function(data) {
 
 });
 
+//GEORGE LOAD
+$('#position-7').on('click', georgeLoad);
+
+function georgeLoad() {
+    $('#position-7').off('click', georgeLoad);
+    $('#position-7 .tutorialX').text('loading');
+    var georgeToLoadVid = document.getElementsByClassName('georgeVid');
+    for (var i = 0; i < georgeToLoadVid.length; i++) {
+        georgeToLoadVid[i].play();
+        setTimeout(pauseGeorgeVideos, 10000)
+    }
+    setTimeout(() => {
+        $('#position-7 .tutorialX').text('> tap <');
+        giveTutorialClick(7); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
+    }, 11000);
+}
+
+var needToPause = true;
+
+function pauseGeorgeVideos() {
+    if (needToPause) {
+        needToPause = false;
+        var georgeToPauseVid = document.getElementsByClassName('georgeVid');
+        for (var i = 0; i < georgeToPauseVid.length; i++) {
+            georgeToPauseVid[i].pause();
+            georgeToPauseVid[i].currentTime = 0;
+        }
+    }
+}
+
 
 // ----------------------------------------------------------------------------- D E V I C E  O R I E N T A T I O N  F O R  T R A N S I T I O N I N G
 window.addEventListener("deviceorientation", handleOrientation, true);
@@ -253,10 +283,6 @@ function giveTutorialClick(tutorial_num) { // --------------------- dynamically 
 
 setTimeout(() => {
     document.getElementById('georgeName').classList.add('flash2');
-    setTimeout(() => {
-        $('#position-7 .tutorialX').text('> tap <');
-        giveTutorialClick(7); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
-    }, 1600);
 }, 800);
 
 $('#heartSVG').bind('touchend', function(e) {
