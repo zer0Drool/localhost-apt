@@ -291,17 +291,23 @@ function ianInit() {
     var ianCanv;
     var ianContext;
     var ianImageCount = 0;
+    var firstImage = true;
 
     var housewifeNamesArr = ['Vicki Gunvalson', 'Kimberly Bryant', 'Jo De La Rosa', 'Jeana Keough', 'Lauri Peterson', 'Tammy Knickerbocker', 'Tamra Judge', 'Quinn Fry', 'Luann de Lesseps', 'Bethenny Frankel', 'Alex McCord', 'Ramona Singer', 'Jill Zarin', 'NeNe Leakes', 'DeShawn Snow', 'Shereé Whitfield', 'Lisa Wu', 'Kim Zolciak-Biermann', 'Gretchen Rossi', 'Lynne Curtin', 'Kelly Killoren Bensimon', 'Teresa Giudice', 'Jacqueline Laurita', 'Caroline Manzo', 'Dina Manzo', 'Danielle Staub', 'Kandi Burruss', 'Alexis Bellino', 'Sonja Morgan', 'Mary Amons', 'Lynda Erkiletian', 'Cat Ommanney', 'Michaele Salahi', 'Stacie Scott Turner', 'Cynthia Bailey', 'Phaedra Parks', 'Taylor Armstrong', 'Camille Grammer', 'Adrienne Maloof', 'Kim Richards', 'Kyle Richards', 'Lisa Vanderpump', 'Lea Black', 'Adriana de Moura', 'Alexia Echevarria', 'Marysol Patton', 'Larsa Pippen', 'Cristy Rice', 'Peggy Tanous', 'Cindy Barshop', 'Melissa Gorga', 'Kathy Wakile', 'Heather Dubrow', 'Aviva Drescher', 'Carole Radziwill', 'Heather Thomson', 'Lisa Hochstein', 'Joanna Krupa', 'Ana Quincoces', 'Karent Sierra', 'Kenya Moore', 'Porsha Williams', 'Brandi Glanville', 'Yolanda Hadid', 'Lydia McLaughlin', 'Carlton Gebbia', 'Joyce Giraud de Ohoven', 'Kristen Taekman', 'Shannon Beador', 'Lizzie Rovsek', 'Teresa Aprea', 'Amber Marchese', 'Nicole Napolitano', 'Claudia Jordan', 'Eileen Davidson', 'Lisa Rinna', 'Dorinda Medley', 'Meghan King Edmonds', 'Kim Fields', 'Erika Girardi', 'Kathryn Edwards', 'Gizelle Bryant', 'Ashley Darby', 'Robyn Dixon', 'Karen Huger', 'Charrisse Jackson-Jordan', 'Katie Rost', 'Jules Wainstein', 'Cary Deuber', 'Tiffany Hendra', 'Stephanie Hollman', 'LeeAnne Locken', 'Brandi Redmond', 'Kelly Dodd', 'Dolores Catania', 'Siggy Flicker', 'Dorit Kemsley', 'Monique Samuels', 'Tinsley Mortimer', 'Peggy Sulahian', 'D’Andra Simmons', 'Kameron Westcott', 'Margaret Josephs', 'Teddi Mellencamp Arroyave', 'Candiace Dillard', 'Emily Simpson', 'Gina Kirschenheiter', 'Marlo Hampton', 'Eva Marcille', 'Shamari DeVoe', 'Denise Richards'];
-    
+
     var housewifeName = document.getElementById('housewife-name');
 
     function ianDraw() {
         ianCanv = document.getElementById("ian-canv");
         ianContext = ianCanv.getContext("2d");
 
-        ianContext.clearRect(0, 0, 560, 880);
-
+        // ianContext.clearRect(0, 0, 560, 880);
+        if (firstImage) {
+            ianContext.globalAlpha = 1.0;
+            firstImage = false;
+        } else {
+            ianContext.globalAlpha = 0.6;
+        }
         ianContext.drawImage(ianImageObjs[ianImageCount], 0, 0, 560, 880);
         housewifeName.innerText = housewifeNamesArr[ianImageCount];
 
