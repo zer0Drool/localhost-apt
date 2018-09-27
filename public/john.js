@@ -276,11 +276,16 @@ for (var i = 0; i < tickers.length; i++) {
                     videos[1].style.display = 'none';
                     videos[1].pause();
                     videos[1].currentTime = 0;
-            } else if (videoOpen === 4) {
+            } else if (videoOpen === 3) {
                     videoWrap.style.display = 'none';
                     videos[2].style.display = 'none';
                     videos[2].pause();
                     videos[2].currentTime = 0;
+            } else if (videoOpen === 4) {
+                    videoWrap.style.display = 'none';
+                    videos[3].style.display = 'none';
+                    videos[3].pause();
+                    videos[3].currentTime = 0;
             }
             videoWrap.style.backgroundColor = '';
             videoOpen = false;
@@ -294,9 +299,13 @@ for (var i = 0; i < tickers.length; i++) {
                 videos[1].style.display = 'block';
                 videos[1].play();
                 videoOpen = 2;
-            } else if (e.target.id === 'tick-four') {
+            } else if (e.target.id === 'tick-three') {
                 videos[2].style.display = 'block';
                 videos[2].play();
+                videoOpen = 3;
+            } else if (e.target.id === 'tick-four') {
+                videos[3].style.display = 'block';
+                videos[3].play();
                 videoOpen = 4;
             }
         }
