@@ -52,8 +52,7 @@ socket.on('connect', function(data) {
    socket.on('daniel_time', data => {
        danielTime = data.time;
        setInterval(() => {
-           // danielTime = danielTime === 984 ? 0 : danielTime + 1;
-           danielTime = danielTime === 249 ? 0 : danielTime + 1;
+           danielTime = danielTime === 984 ? 0 : danielTime + 1;
        }, 1000);
    });
 
@@ -246,11 +245,17 @@ function logStats() {
 }
 
 // ----------------------------------------------------------------------------- D Y N A M I C  T U T O R I A L  C L I C K  E V E N T
+var synced = false;
 function closeTutorial(e) {
-    var danielVideo = document.getElementsByTagName('video')[0];
+    var danielVideo = document.getElementById('danielVideo');
     removeTutorialClick(13); // make sure the only id clickable is the specific wrap
     canTransition = true;
-    danielVideo.currentTime = danielTime;
+    danielVideo.addEventListener('timeupdate', () => {
+        if (!synced) {
+            synced = true;
+            danielVideo.currentTime = danielTime;
+        }
+    })
     danielVideo.play();
 }
 

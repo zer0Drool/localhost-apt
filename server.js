@@ -17,10 +17,9 @@ var colourCounter = 1; // var used to rotate through heart colours
 
 
 // ----------------------------------- D A N I E L  T I M E R
-var danielCurrentTime = 0;
+var danielCurrentTime = 940;
 setInterval(() => {
-    // danielCurrentTime = danielCurrentTime == 984 ? 0 : danielCurrentTime + 1;
-    danielCurrentTime = danielCurrentTime == 249 ? 0 : danielCurrentTime + 1;
+    danielCurrentTime = danielCurrentTime == 984 ? 0 : danielCurrentTime + 1;
 }, 1000);
 
 
@@ -148,7 +147,6 @@ io.on('connection', (socket) => {
     });
 
     socket.on('get_daniel_time', () => {
-        console.log('getting daniel time');
         socket.emit('daniel_time', {time: danielCurrentTime});
     });
 

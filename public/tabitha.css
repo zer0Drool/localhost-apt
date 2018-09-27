@@ -169,7 +169,7 @@ body {
     perspective: 800px;
 }
 
-.environment-cube {
+/* .environment-cube {
     position: relative;
     height: 5300px;
     width: 2000px;
@@ -217,7 +217,7 @@ body {
 
 #environment-front-right {
     transform: translateX(1707px) translateZ(1707px) rotateY(-315deg);
-}
+} */
 
 #tabitha video {
     width: 100%;
