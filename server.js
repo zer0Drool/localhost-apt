@@ -16,6 +16,14 @@ var socketsLength = 0; // var used to update user count
 var colourCounter = 1; // var used to rotate through heart colours
 
 
+// ----------------------------------- D A N I E L  T I M E R
+var danielCurrentTime = 0;
+setInterval(() => {
+    // danielCurrentTime = danielCurrentTime == 984 ? 0 : danielCurrentTime + 1;
+    danielCurrentTime = danielCurrentTime == 249 ? 0 : danielCurrentTime + 1;
+}, 1000);
+
+
 // ----------------------------------- D Y N A M I C  G R A D I E N T
 var peachpuff = 0;
 var deeppink = 0;
@@ -139,6 +147,10 @@ io.on('connection', (socket) => {
         }
     });
 
+    socket.on('get_daniel_time', () => {
+        console.log('getting daniel time');
+        socket.emit('daniel_time', {time: danielCurrentTime});
+    });
 
     socket.emit('my_colour', {colour: socket.colour, backgroundColour: gradient, list: artistLikesTrue}); // emits ONLY to user socket with info about what the heart colour / gradient / artist list should be
 

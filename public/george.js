@@ -335,8 +335,8 @@ georgeDiv.addEventListener('touchend', (e) => {
     }
 })
 
-function georgeActive(direction) {
-    if (direction === 'forward') {
+function georgeActive(directionX) {
+    if (directionX === 'forward') {
         if (georgeClickCount < 4) {
             if (georgeClickCount >= 0) {
                 georgeVidsArray[georgeClickCount].pause();
@@ -368,7 +368,7 @@ function georgeActive(direction) {
                 georgeClickCount++;
             }
         }
-    } else {
+    } else if (directionX === 'back') {
         if (georgeClickCount >= 0) {
             georgeVidsArray[georgeClickCount].pause();
             georgeVidsArray[georgeClickCount].style.transform = `translateX(${X[georgeClickCount]}%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;

@@ -155,15 +155,6 @@ body {
     align-items: center;
 }
 
-#daniel h1 {
-    width: 400px;
-    height: 400px;
-    font-size: 50px;
-    border-radius: 40px;
-    background-color: gold;
-    color: purple;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-family: 'Comic Sans Ms'
+#daniel video {
+    width: 100vw;
 }

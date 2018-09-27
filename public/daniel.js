@@ -27,11 +27,12 @@ var user = {
 };
 
 var canTransition = false;
-
+var danielTime;
 
 // ----------------------------------------------------------------------------- S O C K E T . I O
 // var socket = io.connect('http://avd.local:8080');
-var socket = io.connect('http://192.168.4.1:8080');
+// var socket = io.connect('http://192.168.4.1:8080');
+var socket = io.connect('http://192.168.1.65:8080');
 // var socket = io.connect('http://192.168.1.83:8080');
 
 
@@ -44,6 +45,16 @@ socket.on('connect', function(data) {
 
    socket.on('background_update', data => { // background gradient has changed
        backgroundX.style.background = data.newGradient;
+   });
+
+   socket.emit('get_daniel_time');
+
+   socket.on('daniel_time', data => {
+       danielTime = data.time;
+       setInterval(() => {
+           // danielTime = danielTime === 984 ? 0 : danielTime + 1;
+           danielTime = danielTime === 249 ? 0 : danielTime + 1;
+       }, 1000);
    });
 
 });
@@ -236,8 +247,11 @@ function logStats() {
 
 // ----------------------------------------------------------------------------- D Y N A M I C  T U T O R I A L  C L I C K  E V E N T
 function closeTutorial(e) {
+    var danielVideo = document.getElementsByTagName('video')[0];
     removeTutorialClick(13); // make sure the only id clickable is the specific wrap
     canTransition = true;
+    danielVideo.currentTime = danielTime;
+    danielVideo.play();
 }
 
 
