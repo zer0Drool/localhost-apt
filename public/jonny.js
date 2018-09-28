@@ -2,7 +2,7 @@
 
 // ------------------------------------------------------ E R R O R
 window.onerror = function(msg, url, linenumber) {
-    alert('OOPS AN ERROR  -  :S  -  Please refresh the page.');
+    alert('OOPS AN ERROR  -  :S  -  it will be fine');
     return true;
 }
 
@@ -81,6 +81,7 @@ var noLoaded = false;
 var homeLoaded = false;
 
 function jonnyStart() {
+    questionImageObjs[0].id = 'z0'
     jonny.appendChild(questionImageObjs[0]);
 }
 
@@ -446,6 +447,7 @@ function jonnyHomeScreen() {
 }
 
 var bootInProgress = false;
+var lastImgReboot;
 
 function jonnyForward() {
 
@@ -460,13 +462,22 @@ function jonnyForward() {
                 question = false;
                 yesOrNo === 'yes' ? yes = true : no = true
             } else {
+                questionImageObjs[jonnyQuestionCounter].id = 'z' + jonnyQuestionCounter;
                 jonny.appendChild(questionImageObjs[jonnyQuestionCounter]);
+                document.getElementById('z' + (jonnyQuestionCounter - 1)).style.opacity = 0;
             }
         }
 
         if (reboot) {
+            if (lastImgReboot === 'yes') {
+                console.log('it was yes');
+                document.getElementById('x10').style.opacity = 0;
+            } else if (lastImgReboot === 'no') {
+                console.log('it was no');
+                document.getElementById('x9').style.opacity = 0;
+            }
             bootInProgress = true;
-            jonny.style.backgroundColor = '#0C006E';
+            // jonny.style.backgroundColor = '#0C006E';
             var audio = new Audio('jonny/reboot.mp3');
             audio.play();
             var imageObj = new Image();
@@ -485,22 +496,33 @@ function jonnyForward() {
         }
 
         if (yes) {
-            console.log(jonnyYesCounter);
+            document.getElementById('z4').style.opacity = 0;
+            yesImageObjs[jonnyYesCounter].id = 'x' + jonnyYesCounter
             jonny.appendChild(yesImageObjs[jonnyYesCounter]);
+            if (jonnyYesCounter > 0) {
+                document.getElementById('x' + (jonnyYesCounter - 1)).style.opacity = 0;
+            }
             jonnyYesCounter++;
             console.log(jonnyYesCounter);
             if (jonnyYesCounter === 11) {
                 console.log('hi');
                 yes = false;
+                lastImgReboot = 'yes'
                 reboot = true;
             }
         }
 
         if (no) {
+            document.getElementById('z4').style.opacity = 0;
+            noImageObjs[jonnyNoCounter].id = 'x' + jonnyNoCounter
             jonny.appendChild(noImageObjs[jonnyNoCounter]);
+            if (jonnyNoCounter > 0) {
+                document.getElementById('x' + (jonnyNoCounter - 1)).style.opacity = 0;
+            }
             jonnyNoCounter++;
             if (jonnyNoCounter === 10) {
                 no = false;
+                lastImgReboot = 'no'
                 reboot = true;
             }
         }

@@ -199,17 +199,19 @@ body {
     align-items: center;
     width: 100%;
     height: 50%;
+    border: 3px black solid;
+    background-color: rgba(50, 50, 50, 0.1);
     font-family: arial;
     font-size: 400px;
-    font-style: italic;
-    color: aqua;
+    color: white;
     pointer-events: auto;
 }
 
 #reboot {
-    width: 100vh !important;
-    height: 100vw;
-    transform: rotate(-90deg);
+    width: 100vw !important;
+    /* background-color: #0C006E; */
+    /* height: 100vw; */
+    /* transform: rotate(-90deg); */
 }
 
 .home-screen {

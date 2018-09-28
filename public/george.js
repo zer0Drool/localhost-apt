@@ -2,7 +2,7 @@
 
 // ------------------------------------------------------ E R R O R
 window.onerror = function(msg, url, linenumber) {
-    alert('OOPS AN ERROR  -  :S  -  Please refresh the page.');
+    alert('OOPS AN ERROR  -  :S  -  it will be fine');
     return true;
 }
 
@@ -73,7 +73,6 @@ function georgeLoad() {
     }
     setTimeout(() => {
         $('#position-7 .tutorialX').text('> enter <');
-        canTransition = true;
         giveTutorialClick(7); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
     }, 11000);
 }
@@ -295,6 +294,9 @@ function giveTutorialClick(tutorial_num) { // --------------------- dynamically 
 
 setTimeout(() => {
     document.getElementById('georgeName').classList.add('flash2');
+    setTimeout(() => {
+        canTransition = true;
+    }, 1000);
 }, 800);
 
 $('#heartSVG').bind('touchend', function(e) {

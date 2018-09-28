@@ -118,7 +118,7 @@ body {
 #position-5 {
     pointer-events: auto;
     display: flex;
-    background-color: black;
+    background-color: rgba(20, 20, 60, 0.9);
     justify-content: center;
     align-items: center;
     color: rgb(38, 223, 241);

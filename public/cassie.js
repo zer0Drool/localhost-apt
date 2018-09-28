@@ -2,7 +2,7 @@
 
 // ------------------------------------------------------ E R R O R
 window.onerror = function(msg, url, linenumber) {
-    alert('OOPS AN ERROR  -  :S  -  Please refresh the page.');
+    alert('OOPS AN ERROR  -  :S  -  it will be fine');
     return true;
 }
 

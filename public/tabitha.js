@@ -2,7 +2,7 @@
 
 // ------------------------------------------------------ E R R O R
 window.onerror = function(msg, url, linenumber) {
-    alert('OOPS AN ERROR  -  :S  -  Please refresh the page.');
+    alert('OOPS AN ERROR  -  :S  -  it will be fine');
     return true;
 }
 
@@ -56,59 +56,6 @@ socket.on('connect', function(data) {
 });
 
 
-//TABITHA LOAD
-// $('#position-5').on('click', tabiLoad);
-//
-// function tabiLoad() {
-//     $('#position-5').off('click', tabiLoad);
-//     $('#position-5 .tutorialX').text('loading');
-//     var tabVidsToLoadArray = document.getElementsByClassName('tabVid');
-//     for (var i = 0; i < tabVidsToLoadArray.length; i++) {
-//         if (i === 0) {
-//             tabVidsToLoadArray[0].addEventListener('timeupdate', tabSync);
-//         }
-//         tabVidsToLoadArray[i].volume = 0;
-//         tabVidsToLoadArray[i].play();
-//         setTimeout(pauseTabVideo, 10000)
-//     }
-//     setTimeout(() => {
-//         $('#position-5 .tutorialX').text('> tap <');
-//         giveTutorialClick(5); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
-//     }, 11000);
-// }
-//
-// var needToPause = true;
-//
-// function pauseTabVideo() {
-//     if (needToPause) {
-//         needToPause = false;
-//         var tabVidsToPause = document.getElementsByClassName('tabVid');
-//         for (var i = 0; i < tabVidsToPause.length; i++) {
-//             tabVidsToPause[i].pause();
-//             tabVidsToPause[i].currentTime = 0;
-//             tabVidsToPause[i].volume = 1;
-//         }
-//     }
-// }
-//
-// function tabSync() {
-//     console.log('in sync');
-//     var tabVidsArray = document.getElementsByClassName('tabVid');
-//     if (tabVidsArray[0].currentTime >= 88) {
-//         for (var i = 1; i < tabVidsArray.length; i++) {
-//             tabVidsArray[i].currentTime = tabVidsArray[0].currentTime;
-//         }
-//         tabVidsArray[0].removeEventListener('timeupdate', tabSync);
-//     }
-// }
-//
-// function tabithaInit() {
-//     var tabVidsArray = document.getElementsByClassName('tabVid');
-//     for (var i = 0; i < tabVidsArray.length; i++) {
-//         tabVidsArray[i].play()
-//     }
-// }
-
 // ----------------------------------------------------------------------------- D E V I C E  O R I E N T A T I O N  F O R  T R A N S I T I O N I N G
 window.addEventListener("deviceorientation", handleOrientation, true);
 var transitionActive = false;
@@ -120,20 +67,6 @@ function handleOrientation(event) {
         var alpha = event.alpha;
         var beta = event.beta;
         var gamma = event.gamma;
-
-        // if (document.getElementsByClassName('environment-cube').length) { // tabitha orientation
-        //     var cube = document.getElementsByClassName('environment-cube')[0];
-        //     var z = Math.floor(alpha);
-        //     if (z > zPos) {
-        //         rotation -= 2;
-        //         cube.style.transform = `rotateY(${rotation}deg) translateZ(1000px)`;
-        //     }
-        //     if (z < zPos) {
-        //         rotation += 2;
-        //         cube.style.transform = `rotateY(${rotation}deg) translateZ(1000px)`;
-        //     }
-        //     zPos = Math.floor(alpha);
-        // }
 
         if ((beta > 130 || beta < -150) && (gamma < 40 && gamma > -40)) {
             if (!transitionActive) {
