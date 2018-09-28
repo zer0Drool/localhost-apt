@@ -254,9 +254,9 @@ function giveTutorialClick(tutorial_num) { // --------------------- dynamically 
 setTimeout(() => {
     document.getElementById('johnName').classList.add('flash2');
     setTimeout(() => {
-        $('#position-1 .tutorialX').text('> tap <');
+        $('#position-1 .tutorialX').text('> enter <');
         giveTutorialClick(1); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
-    }, 1600);
+    }, 800);
 }, 800);
 
 var tickers = document.getElementsByClassName('tick');

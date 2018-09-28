@@ -81,7 +81,7 @@ function jonnyStart() {
 
 function jonnyLoadCheck() {
     if (questionLoaded && yesLoaded && noLoaded && homeLoaded) {
-        $('#position-15 .tutorialX').text('> tap <');
+        $('#position-15 .tutorialX').text('> enter <');
         giveTutorialClick(15); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
         jonnyStart();
     }

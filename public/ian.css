@@ -138,10 +138,27 @@ body {
     pointer-events: none;
 }
 
+#ianDescription {
+    position: relative;
+    top: -200px;
+    font-size: 30px;
+    transition: left 1.3s;
+    pointer-events: none;
+}
+
 #ianInstruction1 {
     width: 80%;
     position: relative;
     top: 50px;
+    transition: left 1.3s;
+    pointer-events: none;
+    text-align: center;
+}
+
+#ianInstruction2 {
+    width: 80%;
+    position: relative;
+    top: 100px;
     transition: left 1.3s;
     pointer-events: none;
     text-align: center;

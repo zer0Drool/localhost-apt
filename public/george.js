@@ -49,18 +49,26 @@ socket.on('connect', function(data) {
 });
 
 //GEORGE LOAD
+var georgeToLoadVid = document.getElementsByClassName('georgeVid');
+
+for (var i = 0; i < georgeToLoadVid.length; i++) {
+    georgeToLoadVid[i].src = `/george/SN_0${i + 1}.mp4`;
+}
+
 $('#position-7').on('click', georgeLoad);
 
 function georgeLoad() {
     $('#position-7').off('click', georgeLoad);
-    $('#position-7 .tutorialX').text('loading');
-    var georgeToLoadVid = document.getElementsByClassName('georgeVid');
+    $('#position-7 .tutorialX').text('loading...');
+    // var georgeToLoadVid = document.getElementsByClassName('georgeVid');
     for (var i = 0; i < georgeToLoadVid.length; i++) {
-        georgeToLoadVid[i].play();
         setTimeout(pauseGeorgeVideos, 10000)
+        // georgeToLoadVid[i].src = `/george/SN_0${i + 1}.mp4`;
+        georgeToLoadVid[i].play();
+        alert(georgeToLoadVid[i].readyState)
     }
     setTimeout(() => {
-        $('#position-7 .tutorialX').text('> tap <');
+        $('#position-7 .tutorialX').text('> enter <');
         giveTutorialClick(7); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
     }, 11000);
 }
@@ -73,6 +81,7 @@ function pauseGeorgeVideos() {
         var georgeToPauseVid = document.getElementsByClassName('georgeVid');
         for (var i = 0; i < georgeToPauseVid.length; i++) {
             georgeToPauseVid[i].pause();
+            alert(georgeToPauseVid[i].readyState)
             georgeToPauseVid[i].currentTime = 0;
         }
     }
@@ -317,7 +326,7 @@ georgeDiv.addEventListener('touchmove', (e) => {
 });
 
 georgeDiv.addEventListener('touchend', (e) => {
-    if ((yDiff > 400) && !transitioning) {
+    if ((yDiff > 200) && !transitioning) {
         if (georgeClickCount >= 0) {
             transitioning = true;
             georgeActive('back');
@@ -325,7 +334,7 @@ georgeDiv.addEventListener('touchend', (e) => {
         xDiff = null;
         yDiff = null;
     }
-    if ((yDiff < -400) && !transitioning) {
+    if ((yDiff < -200) && !transitioning) {
         if (georgeClickCount < 4) {
             transitioning = true;
             georgeActive('forward');
@@ -349,7 +358,10 @@ function georgeActive(directionX) {
                     }
                     setTimeout(() => {
                         georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
-                        georgeVidsArray[georgeClickCount].play();
+                        setTimeout(() => {
+                            georgeVidsArray[georgeClickCount].play();
+                            // alert(georgeVidsArray[georgeClickCount].paused)
+                        }, 1500)
                         transitioning = false;
                     }, 1000)
                     georgeClickCount++;
@@ -362,7 +374,10 @@ function georgeActive(directionX) {
                 }
                 setTimeout(() => {
                     georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
-                    georgeVidsArray[georgeClickCount].play();
+                    setTimeout(() => {
+                        georgeVidsArray[georgeClickCount].play();
+                        // alert(georgeVidsArray[georgeClickCount].paused)
+                    }, 1500)
                     transitioning = false;
                 }, 1000)
                 georgeClickCount++;
@@ -381,7 +396,10 @@ function georgeActive(directionX) {
                 if (georgeClickCount > 0) {
                     setTimeout(() => {
                         georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
-                        georgeVidsArray[georgeClickCount].play();
+                        setTimeout(() => {
+                            georgeVidsArray[georgeClickCount].play();
+                            // alert(georgeVidsArray[georgeClickCount].paused)
+                        }, 1500)
                     }, 1000)
                 }
                 setTimeout(() => {transitioning = false;}, 1000);

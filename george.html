@@ -22,8 +22,10 @@
             <!-- ...................................  tutorial for george -->
             <div class="tutorial" id="position-7">
                 <h1 id="georgeName">George Stone</h1>
+                <p id="georgeDescription">video x5 (00.20)</p>
                 <p id="georgeInstruction1">swipe up and down to view videos</p>
-                <p class="tutorialX">tap to load</p>
+                <p id="georgeInstruction2">to progress to next artist raise phone above head</p>
+                <p class="tutorialX">tap here to load videos</p>
             </div>
         </div>
 
@@ -42,12 +44,19 @@
         </div>
 
         <!-- ...................................  george -->
+
+        <link rel="preload" as="video" href="/george/SN_01.mp4">
+        <link rel="preload" as="video" href="/george/SN_02.mp4">
+        <link rel="preload" as="video" href="/george/SN_03.mp4">
+        <link rel="preload" as="video" href="/george/SN_04.mp4">
+        <link rel="preload" as="video" href="/george/SN_05.mp4">
+
         <div id="george">
-            <video poster="/george/georgePoster1.png" class="georgeVid" src="/george/SN_01.mp4" playsinline loop muted></video>
-            <video poster="/george/georgePoster2.png" class="georgeVid" src="/george/SN_02.mp4" playsinline loop muted></video>
-            <video poster="/george/georgePoster3.png" class="georgeVid" src="/george/SN_03.mp4" playsinline loop muted></video>
-            <video poster="/george/georgePoster4.png" class="georgeVid" src="/george/SN_04.mp4" playsinline loop muted></video>
-            <video poster="/george/georgePoster5.png" class="georgeVid" src="/george/SN_05.mp4" playsinline loop muted></video>
+            <video poster="/george/georgePoster1.png" class="georgeVid" playsinline loop muted></video>
+            <video poster="/george/georgePoster2.png" class="georgeVid" playsinline loop muted></video>
+            <video poster="/george/georgePoster3.png" class="georgeVid" playsinline loop muted></video>
+            <video poster="/george/georgePoster4.png" class="georgeVid" playsinline loop muted></video>
+            <video poster="/george/georgePoster5.png" class="georgeVid" playsinline loop muted></video>
         </div>
 
     <script src="jquery.min.js" charset="utf-8"></script>

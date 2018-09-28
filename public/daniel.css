@@ -138,6 +138,22 @@ body {
     pointer-events: none;
 }
 
+#danielDescription {
+    position: relative;
+    top: -200px;
+    font-size: 30px;
+    transition: left 1.3s;
+    pointer-events: none;
+}
+
+#danielInstruction1 {
+    position: relative;
+    top: 50px;
+    transition: left 1.3s;
+    pointer-events: none;
+    text-align: center;
+}
+
 #position-13 .tutorialX {
     position: relative;
     top: 250px;

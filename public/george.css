@@ -138,9 +138,25 @@ body {
     pointer-events: none;
 }
 
+#georgeDescription {
+    position: relative;
+    top: -200px;
+    font-size: 30px;
+    transition: left 1.3s;
+    pointer-events: none;
+}
+
 #georgeInstruction1 {
     position: relative;
     top: 50px;
+    transition: left 1.3s;
+    pointer-events: none;
+    text-align: center;
+}
+
+#georgeInstruction2 {
+    position: relative;
+    top: 100px;
     transition: left 1.3s;
     pointer-events: none;
     text-align: center;
