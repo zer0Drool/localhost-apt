@@ -165,7 +165,10 @@ body {
 #tabitha {
     position: fixed;
     height: 100%;
-    width: 50%;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     perspective: 800px;
 }
 
@@ -219,6 +222,7 @@ body {
     transform: translateX(1707px) translateZ(1707px) rotateY(-315deg);
 } */
 
-#tabitha video {
+#tabiVid {
     width: 100%;
+    margin-bottom: 160px;
 }

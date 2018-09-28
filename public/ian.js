@@ -306,7 +306,7 @@ function ianInit() {
             ianContext.globalAlpha = 1.0;
             firstImage = false;
         } else {
-            ianContext.globalAlpha = 0.6;
+            ianContext.globalAlpha = 0.7;
         }
         ianContext.drawImage(ianImageObjs[ianImageCount], 0, 0, 560, 880);
         housewifeName.innerText = housewifeNamesArr[ianImageCount];
