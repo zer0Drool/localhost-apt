@@ -138,6 +138,14 @@ body {
     pointer-events: none;
 }
 
+#tabithaDescription {
+    position: relative;
+    top: -200px;
+    font-size: 30px;
+    transition: left 1.3s;
+    pointer-events: none;
+}
+
 #tabithaInstruction1 {
     position: relative;
     top: 50px;
@@ -148,7 +156,7 @@ body {
 
 #tabithaInstruction2 {
     position: relative;
-    top: 150px;
+    top: 100px;
     transition: left 1.3s;
     text-align: center;
     pointer-events: none;
@@ -166,10 +174,10 @@ body {
     position: fixed;
     height: 100%;
     width: 100vw;
-    display: flex;
+    /* display: flex;
     align-items: center;
-    justify-content: center;
-    perspective: 800px;
+    justify-content: center; */
+    /* perspective: 800px; */
 }
 
 /* .environment-cube {
@@ -223,6 +231,6 @@ body {
 } */
 
 #tabiVid {
-    width: 100%;
-    margin-bottom: 160px;
+    position: absolute;
+    width: 150%;
 }

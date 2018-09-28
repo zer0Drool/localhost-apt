@@ -326,9 +326,9 @@ function giveTutorialClick(tutorial_num) { // --------------------- dynamically 
 setTimeout(() => {
     document.getElementById('tabithaName').classList.add('flash2');
     setTimeout(() => {
-        $('#position-5 .tutorialX').text('> tap <');
+        $('#position-5 .tutorialX').text('> enter <');
         giveTutorialClick(5)
-    }, 1600);
+    }, 800);
 }, 800);
 
 $('#heartSVG').bind('touchend', function(e) {
