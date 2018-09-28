@@ -181,7 +181,7 @@ body {
 
 #ian-scroll {
     width: 100%;
-    height: 10000px;
+    height: 100%;
     background: linear-gradient(hotpink, transparent);
 }
 
@@ -254,8 +254,8 @@ body {
 }
 
 .pDiamond:nth-of-type(8) {
-    top: 550px;
-    left: 780px;
+    top: 1580px;
+    left: 590px;
 }
 
 .pDiamond:nth-of-type(9) {
@@ -272,52 +272,4 @@ body {
     top: 1820px;
     left: 240px;
     opacity: 0.8;
-}
-
-.pDiamond:nth-of-type(12) {
-    top: 1510px;
-    left: 450px;
-    opacity: 0.9;
-}
-
-.pDiamond:nth-of-type(13) {
-    top: 2070px;
-    left: 720px;
-    opacity: 0.7;
-}
-
-.pDiamond:nth-of-type(14) {
-    top: 2410px;
-    left: 100px;
-    opacity: 0.6;
-}
-
-.pDiamond:nth-of-type(15) {
-    top: 2710px;
-    left: 560px;
-    opacity: 0.5;
-}
-
-.pDiamond:nth-of-type(16) {
-    top: 3420px;
-    left: 310px;
-    opacity: 0.4;
-}
-
-.pDiamond:nth-of-type(17) {
-    top: 4230px;
-    left: 580px;
-    opacity: 0.3;
-}
-
-.pDiamond:nth-of-type(18) {
-    top: 5400px;
-    left: 470px;
-    opacity: 0.2;
-}
-
-.pDiamond:nth-of-type(19) {
-    top: 6810px;
-    left: 320px;
-    opacity: 0.1;
 }

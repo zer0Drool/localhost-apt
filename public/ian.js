@@ -301,7 +301,6 @@ function ianInit() {
         ianCanv = document.getElementById("ian-canv");
         ianContext = ianCanv.getContext("2d");
 
-        // ianContext.clearRect(0, 0, 560, 880);
         if (firstImage) {
             ianContext.globalAlpha = 1.0;
             firstImage = false;
