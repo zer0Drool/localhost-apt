@@ -2,7 +2,7 @@
 
 // ------------------------------------------------------ E R R O R
 window.onerror = function(msg, url, linenumber) {
-    alert('OOOPS A FUCKING ERROR : '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    alert('OOPS AN ERROR  -  :S  -  Please refresh the page.');
     return true;
 }
 
@@ -45,6 +45,10 @@ socket.on('connect', function(data) {
 
    socket.on('background_update', data => { // background gradient has changed
        backgroundX.style.background = data.newGradient;
+   });
+
+   socket.on('my_colour', data => { // happens when user connects / sets heart colour / changes background gradient / updates artist list
+       backgroundX.style.background = data.backgroundColour;
    });
 
    socket.emit('get_daniel_time');
@@ -249,7 +253,6 @@ var synced = false;
 function closeTutorial(e) {
     var danielVideo = document.getElementById('danielVideo');
     removeTutorialClick(13); // make sure the only id clickable is the specific wrap
-    canTransition = true;
     danielVideo.addEventListener('timeupdate', () => {
         if (!synced) {
             synced = true;
@@ -274,6 +277,7 @@ setTimeout(() => {
     document.getElementById('danielName').classList.add('flash2');
     setTimeout(() => {
         $('#position-13 .tutorialX').text('> enter <');
+        canTransition = true;
         giveTutorialClick(13); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
     }, 800);
 }, 800);

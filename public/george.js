@@ -2,7 +2,7 @@
 
 // ------------------------------------------------------ E R R O R
 window.onerror = function(msg, url, linenumber) {
-    alert('OOOPS A FUCKING ERROR : '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    alert('OOPS AN ERROR  -  :S  -  Please refresh the page.');
     return true;
 }
 
@@ -46,6 +46,11 @@ socket.on('connect', function(data) {
        backgroundX.style.background = data.newGradient;
    });
 
+   socket.on('my_colour', data => { // happens when user connects / sets heart colour / changes background gradient / updates artist list
+       backgroundX.style.background = data.backgroundColour;
+   });
+
+
 });
 
 //GEORGE LOAD
@@ -65,10 +70,10 @@ function georgeLoad() {
         setTimeout(pauseGeorgeVideos, 10000)
         // georgeToLoadVid[i].src = `/george/SN_0${i + 1}.mp4`;
         georgeToLoadVid[i].play();
-        alert(georgeToLoadVid[i].readyState)
     }
     setTimeout(() => {
         $('#position-7 .tutorialX').text('> enter <');
+        canTransition = true;
         giveTutorialClick(7); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
     }, 11000);
 }
@@ -81,7 +86,6 @@ function pauseGeorgeVideos() {
         var georgeToPauseVid = document.getElementsByClassName('georgeVid');
         for (var i = 0; i < georgeToPauseVid.length; i++) {
             georgeToPauseVid[i].pause();
-            alert(georgeToPauseVid[i].readyState)
             georgeToPauseVid[i].currentTime = 0;
         }
     }
@@ -276,7 +280,6 @@ function logStats() {
 // ----------------------------------------------------------------------------- D Y N A M I C  T U T O R I A L  C L I C K  E V E N T
 function closeTutorial(e) {
     removeTutorialClick(7); // make sure the only id clickable is the specific wrap
-    canTransition = true;
 }
 
 
@@ -360,7 +363,6 @@ function georgeActive(directionX) {
                         georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
                         setTimeout(() => {
                             georgeVidsArray[georgeClickCount].play();
-                            // alert(georgeVidsArray[georgeClickCount].paused)
                         }, 1500)
                         transitioning = false;
                     }, 1000)
@@ -376,7 +378,6 @@ function georgeActive(directionX) {
                     georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
                     setTimeout(() => {
                         georgeVidsArray[georgeClickCount].play();
-                        // alert(georgeVidsArray[georgeClickCount].paused)
                     }, 1500)
                     transitioning = false;
                 }, 1000)
@@ -398,7 +399,6 @@ function georgeActive(directionX) {
                         georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
                         setTimeout(() => {
                             georgeVidsArray[georgeClickCount].play();
-                            // alert(georgeVidsArray[georgeClickCount].paused)
                         }, 1500)
                     }, 1000)
                 }

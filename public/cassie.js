@@ -2,7 +2,7 @@
 
 // ------------------------------------------------------ E R R O R
 window.onerror = function(msg, url, linenumber) {
-    alert('OOOPS A FUCKING ERROR : '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    alert('OOPS AN ERROR  -  :S  -  Please refresh the page.');
     return true;
 }
 
@@ -43,6 +43,10 @@ socket.on('connect', function(data) {
 
    socket.on('background_update', data => { // background gradient has changed
        backgroundX.style.background = data.newGradient;
+   });
+
+   socket.on('my_colour', data => { // happens when user connects / sets heart colour / changes background gradient / updates artist list
+       backgroundX.style.background = data.backgroundColour;
    });
 
 });
@@ -236,7 +240,6 @@ function logStats() {
 // ----------------------------------------------------------------------------- D Y N A M I C  T U T O R I A L  C L I C K  E V E N T
 function closeTutorial(e) {
     removeTutorialClick(9); // make sure the only id clickable is the specific wrap
-    canTransition = true;
 }
 
 
@@ -254,6 +257,7 @@ setTimeout(() => {
     document.getElementById('cassieName').classList.add('flash2');
     setTimeout(() => {
         $('#position-9 .tutorialX').text('> enter <');
+        canTransition = true;
         giveTutorialClick(9); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
     }, 800);
 }, 800);

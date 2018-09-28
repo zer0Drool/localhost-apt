@@ -2,7 +2,7 @@
 
 // ------------------------------------------------------ E R R O R
 window.onerror = function(msg, url, linenumber) {
-    alert('OOOPS A FUCKING ERROR : '+msg+'\nURL: '+url+'\nLine Number: '+linenumber);
+    alert('OOPS AN ERROR  -  :S  -  Please refresh the page.');
     return true;
 }
 
@@ -46,6 +46,11 @@ socket.on('connect', function(data) {
        backgroundX.style.background = data.newGradient;
    });
 
+   socket.on('my_colour', data => { // happens when user connects / sets heart colour / changes background gradient / updates artist list
+       backgroundX.style.background = data.backgroundColour;
+   });
+
+
 });
 
 
@@ -82,6 +87,7 @@ function jonnyStart() {
 function jonnyLoadCheck() {
     if (questionLoaded && yesLoaded && noLoaded && homeLoaded) {
         $('#position-15 .tutorialX').text('> enter <');
+        canTransition = true;
         giveTutorialClick(15); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
         jonnyStart();
     }
@@ -348,7 +354,6 @@ function logStats() {
 // ----------------------------------------------------------------------------- D Y N A M I C  T U T O R I A L  C L I C K  E V E N T
 function closeTutorial(e) {
     removeTutorialClick(15); // make sure the only id clickable is the specific wrap
-    canTransition = true;
 }
 
 
