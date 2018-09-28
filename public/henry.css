@@ -138,6 +138,30 @@ body {
     pointer-events: none;
 }
 
+#henryDescription {
+    position: relative;
+    top: -200px;
+    font-size: 30px;
+    transition: left 1.3s;
+    pointer-events: none;
+}
+
+#henryInstruction1 {
+    position: relative;
+    top: 50px;
+    transition: left 1.3s;
+    pointer-events: none;
+    text-align: center;
+}
+
+#henryInstruction2 {
+    position: relative;
+    top: 100px;
+    transition: left 1.3s;
+    pointer-events: none;
+    text-align: center;
+}
+
 #position-3 .tutorialX {
     position: relative;
     top: 250px;

@@ -59,7 +59,7 @@ for (var i = 1; i < 112; i++) {
     imageObj.onload = function() {
         ianLoadCounter++;
         if (ianLoadCounter === 111) {
-            $('#position-17 .tutorialX').text('> tap <');
+            $('#position-17 .tutorialX').text('> enter <');
             giveTutorialClick(17); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
             ianInit();
         }

@@ -49,6 +49,117 @@ socket.on('connect', function(data) {
 });
 
 
+var jonny = document.getElementById('jonny');
+var numbers = document.getElementById('numbers');
+var yesButton = document.getElementById('yes');
+var noButton = document.getElementById('no');
+// var snoop = $('#snoop');
+var snoop = document.getElementById('snoop');
+
+// ------------------------------------------ L O A D I N G
+
+var questionImages = [];
+var questionImageObjs = [];
+var questionLoadCounter = 0;
+var yesImages = [];
+var yesImageObjs = [];
+var yesLoadCounter = 0;
+var noImages = [];
+var noImageObjs = [];
+var noLoadCounter = 0;
+var homeImages = [];
+var homeImageObjs = [];
+var homeLoadCounter = 0;
+var questionLoaded = false;
+var yesLoaded = false;
+var noLoaded = false;
+var homeLoaded = false;
+
+function jonnyStart() {
+    jonny.appendChild(questionImageObjs[0]);
+}
+
+function jonnyLoadCheck() {
+    if (questionLoaded && yesLoaded && noLoaded && homeLoaded) {
+        $('#position-15 .tutorialX').text('> enter <');
+        giveTutorialClick(15); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
+        jonnyStart();
+    }
+}
+
+function jonnyLoad() {
+    for (var i = 0; i < 5; i++) {
+        questionImages.push(`jonny/question${i + 1}.jpg`);
+        var imageObj = new Image();
+        imageObj.src = questionImages[i];
+        imageObj.onload = function() {
+            questionLoadCounter++;
+            if (questionLoadCounter === 5) {
+                console.log(questionImageObjs);
+                questionLoaded = true;
+                jonnyLoadCheck();
+            }
+        }
+        questionImageObjs.push(imageObj);
+    }
+
+    for (var i = 0; i < 11; i++) {
+        if (i > 8) {
+            yesImages.push(`jonny/yes${i + 1}.gif`);
+        } else {
+            yesImages.push(`jonny/yes${i + 1}.jpg`);
+        }
+        var imageObj = new Image();
+        imageObj.src = yesImages[i];
+        imageObj.onload = function() {
+            yesLoadCounter++;
+            if (yesLoadCounter === 11) {
+                console.log(yesImageObjs);
+                yesLoaded = true;
+                jonnyLoadCheck();
+            }
+        }
+        yesImageObjs.push(imageObj);
+    }
+
+    for (var i = 0; i < 10; i++) {
+        if (i === 3 || i === 4 || i === 9) {
+            noImages.push(`jonny/no${i + 1}.gif`);
+        } else {
+            noImages.push(`jonny/no${i + 1}.jpg`);
+        }
+        var imageObj = new Image();
+        imageObj.src = noImages[i];
+        imageObj.onload = function() {
+            noLoadCounter++;
+            if (noLoadCounter === 10) {
+                console.log(noImageObjs);
+                noLoaded = true;
+                jonnyLoadCheck();
+            }
+        }
+        noImageObjs.push(imageObj);
+    }
+
+    for (var i = 0; i < 4; i++) {
+        homeImages.push(`jonny/home${i + 1}.jpg`);
+        var imageObj = new Image();
+        imageObj.src = homeImages[i];
+        imageObj.onload = function() {
+            homeLoadCounter++;
+            if (homeLoadCounter === 4) {
+                console.log(homeImageObjs);
+                homeLoaded = true;
+                jonnyLoadCheck();
+            }
+        }
+        homeImageObjs.push(imageObj);
+    }
+}
+
+jonnyLoad();
+
+
 // ----------------------------------------------------------------------------- D E V I C E  O R I E N T A T I O N  F O R  T R A N S I T I O N I N G
 window.addEventListener("deviceorientation", handleOrientation, true);
 var transitionActive = false;
@@ -253,15 +364,164 @@ function giveTutorialClick(tutorial_num) { // --------------------- dynamically 
 
 setTimeout(() => {
     document.getElementById('jonnyName').classList.add('flash2');
-    setTimeout(() => {
-        $('#position-15 .tutorialX').text('> tap <');
-        giveTutorialClick(15); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
-    }, 1600);
 }, 800);
 
 $('#heartSVG').bind('touchend', function(e) {
     e.preventDefault(); // meant to stop zooming in on heart-wrap when spam clicking
     heartClick(); // sends heart
 });
+
+// ------------------------------------------ C L I C K I N G
+
+var question = true;
+var jonnyQuestionCounter = 0;
+var yes = false;
+var jonnyYesCounter = 0;
+var no = false;
+var jonnyNoCounter = 0;
+var home = false;
+var jonnyHomeCounter = 0;
+
+var yesOrNo;
+var reboot = false;
+
+function homeSwipe(direction) {
+    if (direction === 'left') {
+        if (jonnyHomeCounter < 2) {
+            console.log(jonnyHomeCounter);
+            if (jonnyHomeCounter === 1) {
+                $('#snoop').fadeOut();
+            }
+            jonnyHomeCounter++;
+            jonny.appendChild(homeImageObjs[jonnyHomeCounter]);
+            if (jonnyHomeCounter === 1) {
+                $('#snoop').fadeIn();
+            }
+        }
+    } else if (direction === 'right') {
+        if (jonnyHomeCounter > 0) {
+            console.log(jonnyHomeCounter);
+            if (jonnyHomeCounter === 1) {
+                $('#snoop').fadeOut();
+            }
+            jonnyHomeCounter--;
+            jonny.appendChild(homeImageObjs[jonnyHomeCounter]);
+            if (jonnyHomeCounter === 1) {
+                $('#snoop').fadeIn();
+            }
+        }
+    }
+}
+
+function jonnyHomeScreen() {
+    jonny.removeEventListener('click', jonnyForward);
+
+    var xDown;
+    var xDiff;
+
+    jonny.addEventListener('touchstart', (e) => {
+        xDown = e.touches[0].clientX;
+    });
+
+    jonny.addEventListener('touchmove', (e) => {
+        var xDownNew = e.touches[0].clientX;
+        xDiff = xDown - xDownNew;
+    });
+
+    jonny.addEventListener('touchend', (e) => {
+        if ((xDiff > 300)) {
+            homeSwipe('left')
+            xDiff = null;
+        }
+        if ((xDiff < -300)) {
+            homeSwipe('right')
+            xDiff = null;
+        }
+    })
+}
+
+var bootInProgress = false;
+
+function jonnyForward() {
+
+    if (!bootInProgress) {
+
+        if (question) {
+            jonnyQuestionCounter++;
+            if (jonnyQuestionCounter === 2) {
+                numbers.style.display = 'flex';
+            }
+            if (jonnyQuestionCounter === 5) {
+                question = false;
+                yesOrNo === 'yes' ? yes = true : no = true
+            } else {
+                jonny.appendChild(questionImageObjs[jonnyQuestionCounter]);
+            }
+        }
+
+        if (reboot) {
+            bootInProgress = true;
+            jonny.style.backgroundColor = '#0C006E';
+            var audio = new Audio('jonny/reboot.mp3');
+            audio.play();
+            var imageObj = new Image();
+            imageObj.src = 'jonny/reboot.gif' + '?a=' + Math.random();
+            imageObj.id = 'reboot';
+            imageObj.onload = function() {
+                console.log('loaded reboot gif');
+                setTimeout(() => {
+                    jonny.appendChild(homeImageObjs[0]);
+                    reboot = false;
+                    bootInProgress = false;
+                    jonnyHomeScreen();
+                }, 8000)
+            }
+            jonny.appendChild(imageObj);
+        }
+
+        if (yes) {
+            console.log(jonnyYesCounter);
+            jonny.appendChild(yesImageObjs[jonnyYesCounter]);
+            jonnyYesCounter++;
+            console.log(jonnyYesCounter);
+            if (jonnyYesCounter === 11) {
+                console.log('hi');
+                yes = false;
+                reboot = true;
+            }
+        }
+
+        if (no) {
+            jonny.appendChild(noImageObjs[jonnyNoCounter]);
+            jonnyNoCounter++;
+            if (jonnyNoCounter === 10) {
+                no = false;
+                reboot = true;
+            }
+        }
+
+    }
+
+}
+
+jonny.addEventListener('click', jonnyForward);
+
+yesButton.addEventListener('click', () => {
+    yesOrNo = 'yes';
+    console.log('y/n', yesOrNo);
+    numbers.style.display = 'none';
+});
+
+noButton.addEventListener('click', () => {
+    yesOrNo = 'no';
+    console.log('y/n', yesOrNo);
+    numbers.style.display = 'none';
+});
+
+snoop.addEventListener('click', () => {
+    snoop.style.display = 'none';
+    jonny.appendChild(homeImageObjs[3]);
+})
+
 
 }());
