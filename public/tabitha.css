@@ -232,5 +232,6 @@ body {
 
 #tabiVid {
     position: absolute;
-    width: 150%;
+    width: 122%;
+    top: 25%;
 }

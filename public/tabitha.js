@@ -336,4 +336,9 @@ $('#heartSVG').bind('touchend', function(e) {
     heartClick(); // sends heart
 });
 
+var tabiVid = document.getElementById('tabiVid');
+var tabiVidWidth = tabiVid.offsetWidth;
+var devWidth = window.innerWidth;
+tabiVid.style.left = `-${(((tabiVidWidth - devWidth) / 2))}px`;
+
 }());
