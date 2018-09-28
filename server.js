@@ -205,4 +205,4 @@ app.get('*', (req, res) => {
     req.device.type === 'phone' ? res.sendFile(__dirname + '/index.html') : res.sendFile(__dirname + '/denied.html');
 });
 
-server.listen(8080, () => console.log(`   booting complete__ website online__`));
+server.listen(8080);
