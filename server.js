@@ -162,47 +162,47 @@ app.get('/logStats', (req, res) => {
 })
 
 app.get('/john_flindt', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/john.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/john.html') : res.sendFile(__dirname + '/john.html');
 })
 
 app.get('/henry_pope', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/henry.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/henry.html') : res.sendFile(__dirname + '/henry.html');
 })
 
 app.get('/tabitha_tohill_reid', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/tabitha.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/tabitha.html') : res.sendFile(__dirname + '/tabitha.html');
 })
 
 app.get('/george_stone', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/george.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/george.html') : res.sendFile(__dirname + '/george.html');
 })
 
 app.get('/cassie_mcquater', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/cassie.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/cassie.html') : res.sendFile(__dirname + '/cassie.html');
 })
 
 app.get('/jon_arbuckle', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/jon.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/jon.html') : res.sendFile(__dirname + '/jon.html');
 })
 
 app.get('/daniel_lee', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/daniel.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/daniel.html') : res.sendFile(__dirname + '/daniel.html');
 })
 
 app.get('/jonny_tanna', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/jonny.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/jonny.html') : res.sendFile(__dirname + '/jonny.html');
 })
 
 app.get('/ian_williamson', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/ian.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/ian.html') : res.sendFile(__dirname + '/ian.html');
 })
 
 app.get('/', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/index.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/index.html') : res.sendFile(__dirname + '/index.html');
 });
 
 app.get('*', (req, res) => {
-    req.device.type === 'phone' ? res.sendFile(__dirname + '/index.html') : res.sendFile(__dirname + '/denied.html');
+    req.device.type === 'phone' ? res.sendFile(__dirname + '/index.html') : res.sendFile(__dirname + '/index.html');
 });
 
 server.listen(8080);

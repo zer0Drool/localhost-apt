@@ -31,9 +31,9 @@ var danielTime;
 
 // ----------------------------------------------------------------------------- S O C K E T . I O
 // var socket = io.connect('http://avd.local:8080');
-var socket = io.connect('http://192.168.4.1:8080');
+// var socket = io.connect('http://192.168.4.1:8080');
 // var socket = io.connect('http://192.168.1.65:8080');
-// var socket = io.connect('http://192.168.1.83:8080');
+var socket = io.connect('http://192.168.1.83:8080');
 
 
 socket.on('connect', function(data) {
@@ -101,8 +101,8 @@ function handleOrientation(event) {
                         clearInterval(transitionInterval);
                         setTimeout(() => {
                             try {
-                                // location.href = `http://192.168.1.83:8080/jonny_tanna?colour=${user.colour}`;
-                                location.href = `http://192.168.4.1:8080/jonny_tanna?colour=${user.colour}`;
+                                location.href = `http://192.168.1.83:8080/jonny_tanna?colour=${user.colour}`;
+                                // location.href = `http://192.168.4.1:8080/jonny_tanna?colour=${user.colour}`;
                                 // location.href = `http://avd.local:8080/jonny_tanna?colour=${user.colour}`;
                             } catch (e) {
                                 $('#transition-counter').hide();
@@ -286,5 +286,11 @@ $('#heartSVG').bind('touchend', function(e) {
     e.preventDefault(); // meant to stop zooming in on heart-wrap when spam clicking
     heartClick(); // sends heart
 });
+
+document.addEventListener('keydown', e => {
+    if (e.keyCode === 39) {
+        heartClick();
+    }
+})
 
 }());

@@ -31,8 +31,8 @@ var canTransition = false;
 
 // ----------------------------------------------------------------------------- S O C K E T . I O
 // var socket = io.connect('http://avd.local:8080');
-var socket = io.connect('http://192.168.4.1:8080');
-// var socket = io.connect('http://192.168.1.83:8080');
+// var socket = io.connect('http://192.168.4.1:8080');
+var socket = io.connect('http://192.168.1.83:8080');
 
 
 socket.on('connect', function(data) {
@@ -129,8 +129,8 @@ function handleOrientation(event) {
                         clearInterval(transitionInterval);
                         setTimeout(() => {
                             try {
-                                // location.href = `http://192.168.1.83:8080/cassie_mcquater?colour=${user.colour}`;
-                                location.href = `http://192.168.4.1:8080/cassie_mcquater?colour=${user.colour}`;
+                                location.href = `http://192.168.1.83:8080/cassie_mcquater?colour=${user.colour}`;
+                                // location.href = `http://192.168.4.1:8080/cassie_mcquater?colour=${user.colour}`;
                                 // location.href = `http://avd.local:8080/cassie_mcquater?colour=${user.colour}`;
                             } catch (e) {
                                 $('#transition-counter').hide();
@@ -317,35 +317,47 @@ var xDiff;
 var yDiff;
 var transitioning;
 
-georgeDiv.addEventListener('touchstart', (e) => {
-    xDown = e.touches[0].clientX;
-    yDown = e.touches[0].clientY;
-});
+// georgeDiv.addEventListener('touchstart', (e) => {
+//     xDown = e.touches[0].clientX;
+//     yDown = e.touches[0].clientY;
+// });
+//
+// georgeDiv.addEventListener('touchmove', (e) => {
+//     var xDownNew = e.touches[0].clientX;
+//     var yDownNew = e.touches[0].clientY;
+//
+//     xDiff = xDown - xDownNew;
+//     yDiff = yDown - yDownNew;
+// });
+//
+// georgeDiv.addEventListener('touchend', (e) => {
+//     if ((yDiff > 200) && !transitioning) {
+//         if (georgeClickCount >= 0) {
+//             transitioning = true;
+//             georgeActive('back');
+//         }
+//         xDiff = null;
+//         yDiff = null;
+//     }
+//     if ((yDiff < -200) && !transitioning) {
+//         if (georgeClickCount < 4) {
+//             transitioning = true;
+//             georgeActive('forward');
+//         }
+//         xDiff = null;
+//         yDiff = null;
+//     }
+// })
 
-georgeDiv.addEventListener('touchmove', (e) => {
-    var xDownNew = e.touches[0].clientX;
-    var yDownNew = e.touches[0].clientY;
-
-    xDiff = xDown - xDownNew;
-    yDiff = yDown - yDownNew;
-});
-
-georgeDiv.addEventListener('touchend', (e) => {
-    if ((yDiff > 200) && !transitioning) {
-        if (georgeClickCount >= 0) {
-            transitioning = true;
-            georgeActive('back');
-        }
-        xDiff = null;
-        yDiff = null;
+document.addEventListener('keydown', e => {
+    if (e.keyCode === 38) {
+        georgeActive('forward')
     }
-    if ((yDiff < -200) && !transitioning) {
-        if (georgeClickCount < 4) {
-            transitioning = true;
-            georgeActive('forward');
-        }
-        xDiff = null;
-        yDiff = null;
+    if (e.keyCode === 40) {
+        georgeActive('back')
+    }
+    if (e.keyCode === 39) {
+        heartClick();
     }
 })
 
