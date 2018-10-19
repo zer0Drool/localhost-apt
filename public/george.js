@@ -54,41 +54,41 @@ socket.on('connect', function(data) {
 });
 
 //GEORGE LOAD
-var georgeToLoadVid = document.getElementsByClassName('georgeVid');
-
-for (var i = 0; i < georgeToLoadVid.length; i++) {
-    georgeToLoadVid[i].src = `/george/SN_0${i + 1}.mp4`;
-}
-
-$('#position-7').on('click', georgeLoad);
-
-function georgeLoad() {
-    $('#position-7').off('click', georgeLoad);
-    $('#position-7 .tutorialX').text('loading...');
-    // var georgeToLoadVid = document.getElementsByClassName('georgeVid');
-    for (var i = 0; i < georgeToLoadVid.length; i++) {
-        setTimeout(pauseGeorgeVideos, 10000)
-        // georgeToLoadVid[i].src = `/george/SN_0${i + 1}.mp4`;
-        georgeToLoadVid[i].play();
-    }
-    setTimeout(() => {
-        $('#position-7 .tutorialX').text('> enter <');
-        giveTutorialClick(7); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
-    }, 11000);
-}
-
-var needToPause = true;
-
-function pauseGeorgeVideos() {
-    if (needToPause) {
-        needToPause = false;
-        var georgeToPauseVid = document.getElementsByClassName('georgeVid');
-        for (var i = 0; i < georgeToPauseVid.length; i++) {
-            georgeToPauseVid[i].pause();
-            georgeToPauseVid[i].currentTime = 0;
-        }
-    }
-}
+// var georgeToLoadVid = document.getElementsByClassName('georgeVid');
+//
+// for (var i = 0; i < georgeToLoadVid.length; i++) {
+//     georgeToLoadVid[i].src = `/george/SN_0${i + 1}.mp4`;
+// }
+//
+// $('#position-7').on('click', georgeLoad);
+//
+// function georgeLoad() {
+//     $('#position-7').off('click', georgeLoad);
+//     $('#position-7 .tutorialX').text('loading...');
+//     // var georgeToLoadVid = document.getElementsByClassName('georgeVid');
+//     for (var i = 0; i < georgeToLoadVid.length; i++) {
+//         setTimeout(pauseGeorgeVideos, 10000)
+//         // georgeToLoadVid[i].src = `/george/SN_0${i + 1}.mp4`;
+//         georgeToLoadVid[i].play();
+//     }
+//     setTimeout(() => {
+//         $('#position-7 .tutorialX').text('> enter <');
+//         giveTutorialClick(7); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
+//     }, 11000);
+// }
+//
+// var needToPause = true;
+//
+// function pauseGeorgeVideos() {
+//     if (needToPause) {
+//         needToPause = false;
+//         var georgeToPauseVid = document.getElementsByClassName('georgeVid');
+//         for (var i = 0; i < georgeToPauseVid.length; i++) {
+//             georgeToPauseVid[i].pause();
+//             georgeToPauseVid[i].currentTime = 0;
+//         }
+//     }
+// }
 
 
 // ----------------------------------------------------------------------------- D E V I C E  O R I E N T A T I O N  F O R  T R A N S I T I O N I N G
@@ -279,6 +279,7 @@ function logStats() {
 // ----------------------------------------------------------------------------- D Y N A M I C  T U T O R I A L  C L I C K  E V E N T
 function closeTutorial(e) {
     removeTutorialClick(7); // make sure the only id clickable is the specific wrap
+    georgeVid.play();
 }
 
 
@@ -295,7 +296,9 @@ function giveTutorialClick(tutorial_num) { // --------------------- dynamically 
 setTimeout(() => {
     document.getElementById('georgeName').classList.add('flash2');
     setTimeout(() => {
+        $('#position-7 .tutorialX').text('> enter <');
         canTransition = true;
+        giveTutorialClick(7); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
     }, 1000);
 }, 800);
 
@@ -304,18 +307,19 @@ $('#heartSVG').bind('touchend', function(e) {
     heartClick(); // sends heart
 });
 
-var georgeDiv = document.getElementById('george');
-georgeDiv.style.pointerEvents = 'auto';
-var georgeVidsArray = document.getElementsByClassName('georgeVid');
-
-var Z = [-500, -1000, -1500, -2000, -2500];
-var X = [-50, -40, -30, -20, -10];
-var georgeClickCount = -1;
-var xDown;
-var yDown;
-var xDiff;
-var yDiff;
-var transitioning;
+var georgeVid = document.getElementsByClassName('georgeVid')[0];
+console.log(georgeVid);
+// var georgeDiv = document.getElementById('george');
+// georgeDiv.style.pointerEvents = 'auto';
+//
+// var Z = [-500, -1000, -1500, -2000, -2500];
+// var X = [-50, -40, -30, -20, -10];
+// var georgeClickCount = -1;
+// var xDown;
+// var yDown;
+// var xDiff;
+// var yDiff;
+// var transitioning;
 
 // georgeDiv.addEventListener('touchstart', (e) => {
 //     xDown = e.touches[0].clientX;
@@ -349,81 +353,81 @@ var transitioning;
 //     }
 // })
 
-document.addEventListener('keydown', e => {
-    if (e.keyCode === 38) {
-        georgeActive('forward')
-    }
-    if (e.keyCode === 40) {
-        georgeActive('back')
-    }
-    if (e.keyCode === 39) {
-        heartClick();
-    }
-})
+// document.addEventListener('keydown', e => {
+//     if (e.keyCode === 38) {
+//         georgeActive('forward')
+//     }
+//     if (e.keyCode === 40) {
+//         georgeActive('back')
+//     }
+//     if (e.keyCode === 39) {
+//         heartClick();
+//     }
+// })
 
-function georgeActive(directionX) {
-    if (directionX === 'forward') {
-        if (georgeClickCount < 4) {
-            if (georgeClickCount >= 0) {
-                georgeVidsArray[georgeClickCount].pause();
-                georgeVidsArray[georgeClickCount].style.transform = `translateX(${X[georgeClickCount + 1]}%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
-                setTimeout(() => {
-                    for (var i = 0; i < Z.length; i++) {
-                        Z[i] += 500;
-                        X[i] -= 10;
-                        georgeVidsArray[i].style.transform = `translateX(${X[i]}%) translateY(2%) translateZ(${Z[i]}px)`;
-                    }
-                    setTimeout(() => {
-                        georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
-                        setTimeout(() => {
-                            georgeVidsArray[georgeClickCount].play();
-                        }, 1500)
-                        transitioning = false;
-                    }, 1000)
-                    georgeClickCount++;
-                }, 1000);
-            } else {
-                for (var i = 0; i < Z.length; i++) {
-                    Z[i] += 500;
-                    X[i] -= 10;
-                    georgeVidsArray[i].style.transform = `translateX(${X[i]}%) translateY(2%) translateZ(${Z[i]}px)`;
-                }
-                setTimeout(() => {
-                    georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
-                    setTimeout(() => {
-                        georgeVidsArray[georgeClickCount].play();
-                    }, 1500)
-                    transitioning = false;
-                }, 1000)
-                georgeClickCount++;
-            }
-        }
-    } else if (directionX === 'back') {
-        if (georgeClickCount >= 0) {
-            georgeVidsArray[georgeClickCount].pause();
-            georgeVidsArray[georgeClickCount].style.transform = `translateX(${X[georgeClickCount]}%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
-            setTimeout(() => {
-                for (var i = 0; i < Z.length; i++) {
-                    Z[i] -= 500;
-                    X[i] += 10;
-                    georgeVidsArray[i].style.transform = `translateX(${X[i]}%) translateY(2%) translateZ(${Z[i]}px)`;
-                }
-                if (georgeClickCount > 0) {
-                    setTimeout(() => {
-                        georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
-                        setTimeout(() => {
-                            georgeVidsArray[georgeClickCount].play();
-                        }, 1500)
-                    }, 1000)
-                }
-                setTimeout(() => {transitioning = false;}, 1000);
-                georgeClickCount--;
-            }, 1000);
-        }
-    }
+// function georgeActive(directionX) {
+//     if (directionX === 'forward') {
+//         if (georgeClickCount < 4) {
+//             if (georgeClickCount >= 0) {
+//                 georgeVidsArray[georgeClickCount].pause();
+//                 georgeVidsArray[georgeClickCount].style.transform = `translateX(${X[georgeClickCount + 1]}%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
+//                 setTimeout(() => {
+//                     for (var i = 0; i < Z.length; i++) {
+//                         Z[i] += 500;
+//                         X[i] -= 10;
+//                         georgeVidsArray[i].style.transform = `translateX(${X[i]}%) translateY(2%) translateZ(${Z[i]}px)`;
+//                     }
+//                     setTimeout(() => {
+//                         georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
+//                         setTimeout(() => {
+//                             georgeVidsArray[georgeClickCount].play();
+//                         }, 1500)
+//                         transitioning = false;
+//                     }, 1000)
+//                     georgeClickCount++;
+//                 }, 1000);
+//             } else {
+//                 for (var i = 0; i < Z.length; i++) {
+//                     Z[i] += 500;
+//                     X[i] -= 10;
+//                     georgeVidsArray[i].style.transform = `translateX(${X[i]}%) translateY(2%) translateZ(${Z[i]}px)`;
+//                 }
+//                 setTimeout(() => {
+//                     georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
+//                     setTimeout(() => {
+//                         georgeVidsArray[georgeClickCount].play();
+//                     }, 1500)
+//                     transitioning = false;
+//                 }, 1000)
+//                 georgeClickCount++;
+//             }
+//         }
+//     } else if (directionX === 'back') {
+//         if (georgeClickCount >= 0) {
+//             georgeVidsArray[georgeClickCount].pause();
+//             georgeVidsArray[georgeClickCount].style.transform = `translateX(${X[georgeClickCount]}%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
+//             setTimeout(() => {
+//                 for (var i = 0; i < Z.length; i++) {
+//                     Z[i] -= 500;
+//                     X[i] += 10;
+//                     georgeVidsArray[i].style.transform = `translateX(${X[i]}%) translateY(2%) translateZ(${Z[i]}px)`;
+//                 }
+//                 if (georgeClickCount > 0) {
+//                     setTimeout(() => {
+//                         georgeVidsArray[georgeClickCount].style.transform = `translateX(12%) translateY(2%) translateZ(${Z[georgeClickCount]}px)`;
+//                         setTimeout(() => {
+//                             georgeVidsArray[georgeClickCount].play();
+//                         }, 1500)
+//                     }, 1000)
+//                 }
+//                 setTimeout(() => {transitioning = false;}, 1000);
+//                 georgeClickCount--;
+//             }, 1000);
+//         }
+//     }
+//
+// }
 
-}
-
-georgeDiv.addEventListener('click', georgeActive);
+// georgeDiv.addEventListener('click', georgeActive);
 
 }());

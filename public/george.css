@@ -171,6 +171,9 @@ body {
 
 /* ------------------------------------------------------------------------------- G E O R G E */
 #george {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     position: fixed;
     height: 100%;
     width: 100%;
@@ -188,7 +191,7 @@ body {
     pointer-events: none;
 }
 
-.georgeVid:first-of-type {
+/* .georgeVid:first-of-type {
     z-index: 5;
     transform: translateX(-50%) translateY(2%) translateZ(-500px);
 }
@@ -211,4 +214,4 @@ body {
 .georgeVid:last-of-type {
     z-index: 1;
     transform: translateX(-10%) translateY(2%) translateZ(-2500px);
-}
+} */

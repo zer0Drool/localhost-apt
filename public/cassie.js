@@ -267,6 +267,12 @@ $('#heartSVG').bind('touchend', function(e) {
     heartClick(); // sends heart
 });
 
+document.addEventListener('keydown', e => {
+    if (e.keyCode === 39) {
+        heartClick();
+    }
+})
+
 game = new Phaser.Game(window.innerWidth, window.innerHeight, Phaser.CANVAS, document.getElementById('bang'), { preload: preload, create: create, update: update });
 function preload() {
 game.scale.scaleMode = Phaser.ScaleManager.aspectRatio;
