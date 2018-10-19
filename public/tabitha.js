@@ -63,7 +63,6 @@ function tabiLoad() {
         if (i === 0) {
             tabVidsToLoadArray[0].addEventListener('timeupdate', tabSync);
         }
-        tabVidsToLoadArray[i].volume = 0;
         tabVidsToLoadArray[i].play();
         setTimeout(pauseTabVideo, 10000)
     }
