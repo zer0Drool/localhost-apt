@@ -110,8 +110,8 @@ function jonnyLoad() {
         questionImageObjs.push(imageObj);
     }
 
-    for (var i = 0; i < 11; i++) {
-        if (i > 8) {
+    for (var i = 0; i < 12; i++) {
+        if (i > 9) {
             yesImages.push(`jonny/yes${i + 1}.gif`);
         } else {
             yesImages.push(`jonny/yes${i + 1}.jpg`);
@@ -120,7 +120,7 @@ function jonnyLoad() {
         imageObj.src = yesImages[i];
         imageObj.onload = function() {
             yesLoadCounter++;
-            if (yesLoadCounter === 11) {
+            if (yesLoadCounter === 12) {
                 console.log(yesImageObjs);
                 yesLoaded = true;
                 jonnyLoadCheck();

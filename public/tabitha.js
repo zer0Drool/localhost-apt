@@ -26,7 +26,7 @@ var user = {
     colour: location.search.replace(/^.*?\=/, '').length ? location.search.replace(/^.*?\=/, '') : 2
 };
 
-var canTransition = false;
+var canTransition = true;
 // tabitha
 var zPos = null;
 var rotation = 0;
@@ -49,6 +49,10 @@ socket.on('connect', function(data) {
        backgroundX.style.background = data.newGradient;
    });
 
+   socket.on('my_colour', data => { // happens when user connects / sets heart colour / changes background gradient / updates artist list
+       backgroundX.style.background = data.backgroundColour;
+   });
+
 });
 
 
@@ -57,19 +61,19 @@ $('#position-5').on('click', tabiLoad);
 
 function tabiLoad() {
     $('#position-5').off('click', tabiLoad);
-    $('#position-5 .tutorialX').text('loading');
+    $('#position-5 .tutorialX').text('loading...');
     var tabVidsToLoadArray = document.getElementsByClassName('tabVid');
     for (var i = 0; i < tabVidsToLoadArray.length; i++) {
         if (i === 0) {
             tabVidsToLoadArray[0].addEventListener('timeupdate', tabSync);
         }
         tabVidsToLoadArray[i].play();
-        setTimeout(pauseTabVideo, 10000)
+        setTimeout(pauseTabVideo, 1000)
     }
     setTimeout(() => {
-        $('#position-5 .tutorialX').text('> tap <');
+        $('#position-5 .tutorialX').text('> enter <');
         giveTutorialClick(5); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
-    }, 11000);
+    }, 5000);
 }
 
 var needToPause = true;
@@ -323,6 +327,7 @@ function giveTutorialClick(tutorial_num) { // --------------------- dynamically 
 
 setTimeout(() => {
     document.getElementById('tabithaName').classList.add('flash2');
+    $('#position-5 .tutorialX').text('tap to load');
 }, 800);
 
 $('#heartSVG').bind('touchend', function(e) {

@@ -57,13 +57,13 @@ socket.on('connect', function(data) {
 var ianImages = [];
 var ianImageObjs = [];
 var ianLoadCounter = 0;
-for (var i = 1; i < 112; i++) {
+for (var i = 1; i < 114; i++) {
     ianImages.push(`ian/housewives/${i}.jpg`);
     var imageObj = new Image();
     imageObj.src = ianImages[i - 1];
     imageObj.onload = function() {
         ianLoadCounter++;
-        if (ianLoadCounter === 111) {
+        if (ianLoadCounter === 113) {
             $('#position-17 .tutorialX').text('> enter <');
             canTransition = true;
             giveTutorialClick(17); // -------------------------------------- giving click event listener to tutorial 1 once all have transitioned etc...
@@ -321,16 +321,15 @@ function ianInit() {
         }
     }
 
-    // setInterval(ianDraw, Math.floor(Math.random() * 800));
-    // ianDraw();
-    document.addEventListener('keydown', e => {
-        if (e.keyCode === 38) {
-            ianDraw();
-        }
-        if (e.keyCode === 39) {
-            heartClick();
-        }
-    })
+    ianDraw();
+    // document.addEventListener('keydown', e => {
+    //     if (e.keyCode === 38) {
+    //         ianDraw();
+    //     }
+    //     if (e.keyCode === 39) {
+    //         heartClick();
+    //     }
+    // })
 }
 
 }());
