@@ -12,7 +12,7 @@
   "dependencies": {
     "body-scroll-lock": "^2.5.7",
     "compression": "^1.7.3",
-    "express": "^4.16.3",
+    "express": "^4.17.3",
     "express-device": "^0.4.2",
     "jquery": "^3.3.1",
     "socket.io": "^2.1.1"
